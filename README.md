@@ -43,4 +43,4 @@ Also, a logged in Head Chef can check his list of recipes to see how well they a
 ## Issue Tracking
 For the purpose of demonstrating a complete Agile Workflow, we
 created a Jira instance that you can find
-[here]( https://the-night-heron.atlassian.net/jira/software/projects/CRA/boards/1 ).
+[here]( https://the-night-heron.atlassian.net ).
