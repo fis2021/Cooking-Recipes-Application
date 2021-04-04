@@ -1,0 +1,9 @@
+#primaryButton{
+    -fx-text-fill: rgb(555, 1, 1);
+    -fx-border-color: rgb(1, 555, 1);
+    -fx-border-radius: 20 0 20 0;
+    -fx-border-width: 3;
+    -fx-background-radius: 20 0 20 0;
+    -fx-padding: 3 6 6 6;
+    -fx-background-color: lightblue;
+}
