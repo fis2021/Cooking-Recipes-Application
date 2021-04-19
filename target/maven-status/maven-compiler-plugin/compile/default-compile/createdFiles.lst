@@ -1,9 +1,0 @@
-org\tnh\Main.class
-org\tnh\PrimaryController.class
-org\tnh\controllers\RegistrationController.class
-org\tnh\services\UserService.class
-org\tnh\exceptions\UsernameAlreadyExistsException.class
-org\tnh\SecondaryController.class
-org\tnh\model\User.class
-org\tnh\services\FileSystemService.class
-org\tnh\App.class

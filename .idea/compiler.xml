@@ -9,6 +9,11 @@
         <module name="v2" />
         <module name="Cooking-Recipes-Application" />
       </profile>
+      <profile name="Annotation profile for Unknown" enabled="true">
+        <sourceOutputDir name="../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="wrapper" target="1.5" />
