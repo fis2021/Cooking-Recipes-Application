@@ -1,12 +1,12 @@
-package org.loose.fis.sre.controllers;
+package org.tnh.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
-import org.loose.fis.sre.services.UserService;
+import org.tnh.exceptions.UsernameAlreadyExistsException;
+import org.tnh.services.UserService;
 
 public class RegistrationController {
 

@@ -1,16 +1,16 @@
-package org.loose.fis.sre.services;
+package org.tnh.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
-import org.loose.fis.sre.model.User;
+import org.tnh.exceptions.UsernameAlreadyExistsException;
+import org.tnh.model.User;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
-import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
+import static org.tnh.services.FileSystemService.getPathToFile;
 
 public class UserService {
 
