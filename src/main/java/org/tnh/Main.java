@@ -10,6 +10,7 @@ import org.tnh.services.UserService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 
 public class Main extends Application {
 
@@ -17,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
         primaryStage.setTitle("Registration Example");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
@@ -25,8 +26,13 @@ public class Main extends Application {
 
     private void initDirectory() {
         Path applicationHomePath = FileSystemService.APPLICATION_HOME_PATH;
-        if (!Files.exists(applicationHomePath))
-            applicationHomePath.toFile().mkdirs();
+        if (!Files.exists(applicationHomePath)) {
+            boolean wasSuccessful;
+            wasSuccessful = applicationHomePath.toFile().mkdirs();
+            if (!wasSuccessful) {
+                System.out.println("was not successful.");
+            }
+        }
     }
 
 
