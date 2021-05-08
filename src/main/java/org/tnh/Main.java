@@ -19,7 +19,7 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
-        primaryStage.setTitle("Registration Example");
+        primaryStage.setTitle("Registration");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
@@ -36,7 +36,8 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
 }
