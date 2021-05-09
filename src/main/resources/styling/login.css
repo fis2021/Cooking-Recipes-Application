@@ -1,0 +1,28 @@
+#imageGrid
+{
+    -fx-background-image: url("images/logo.png");
+}
+
+.button
+{
+    -fx-pref-width: 115px;
+    -fx-pref-height: 20px;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.text-field
+{
+    -fx-border-color: gray;
+}
+
+#login_button
+{
+    -fx-background-color: green;
+}
+
+#register_button
+{
+    -fx-background-color: blue;
+}

@@ -18,9 +18,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
-        primaryStage.setTitle("Registration");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+        primaryStage.setTitle("Cooking-Recipes-Application");
+        primaryStage.setScene(new Scene(root, 900, 550));
         primaryStage.show();
     }
 
@@ -34,7 +34,6 @@ public class Main extends Application {
             }
         }
     }
-
 
     public static void main(String[] args)
     {

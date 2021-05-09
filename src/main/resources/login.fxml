@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="imageGrid" fx:controller="org.tnh.controllers.LoginController"
+          xmlns:fx="http://javafx.com/fxml" stylesheets="styling/login.css"
+          alignment="center" vgap="10">
+
+    <GridPane fx:id="buttonsGrid" hgap="10" vgap="15" alignment="center" GridPane.rowIndex="1" GridPane.columnIndex="0">
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        </padding>
+
+        <TextField fx:id="search" promptText="Search"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+
+        <TextField fx:id="username" promptText="Username"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+
+        <PasswordField fx:id="password" promptText="Password"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+
+        <HBox alignment="top_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <Button fx:id ="login_button" text="Log in"/>
+        </HBox>
+        <HBox alignment="top_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Button fx:id ="register_button" onAction="#handleCreateAccountAction" text="Register"/>
+        </HBox>
+    </GridPane>
+</GridPane>
+
