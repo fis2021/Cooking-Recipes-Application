@@ -1,6 +1,6 @@
 #imageGrid
 {
-    -fx-background-color:rgb(245,0,131);
+    -fx-background-image: url("images/logo.png");
 }
 
 .button
@@ -15,11 +15,6 @@
 .text-field
 {
     -fx-border-color: gray;
-}
-
-#recipes_button
-{
-    -fx-background-color: red;
 }
 
 #login_button

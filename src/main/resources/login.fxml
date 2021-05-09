@@ -3,35 +3,31 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+
 <GridPane fx:id="imageGrid" fx:controller="org.tnh.controllers.LoginController"
           xmlns:fx="http://javafx.com/fxml" stylesheets="styling/login.css"
           alignment="center" vgap="10">
-
-    <ImageView id="logo" GridPane.rowIndex="0" GridPane.columnIndex="0" fitWidth="500" fitHeight="300">
-        <Image url="https://ca-times.brightspotcdn.com/dims4/default/9587383/2147483647/strip/true/crop/3000x2000+0+0/resize/1486x991!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F2c%2F81%2Ffcf6a0a04032869986b92e136c2c%2Fla-times-recipe-database-cooking-newsletter.jpg"/>
-    </ImageView>
 
     <GridPane fx:id="buttonsGrid" hgap="10" vgap="15" alignment="center" GridPane.rowIndex="1" GridPane.columnIndex="0">
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
         </padding>
 
-        <TextField fx:id="username" promptText="Username"
+        <TextField fx:id="search" promptText="Search"
                    GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
 
-        <PasswordField fx:id="password" promptText="Password"
-                       GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+        <TextField fx:id="username" promptText="Username"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
 
-        <HBox alignment="center" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3">
-            <Button fx:id ="recipes_button" text="Recipes"/>
-        </HBox>
-        <HBox alignment="center" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <PasswordField fx:id="password" promptText="Password"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+
+        <HBox alignment="top_right" spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
             <Button fx:id ="login_button" text="Log in"/>
         </HBox>
-        <HBox alignment="center" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <HBox alignment="top_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
             <Button fx:id ="register_button" onAction="#handleCreateAccountAction" text="Register"/>
         </HBox>
     </GridPane>
 </GridPane>
+
