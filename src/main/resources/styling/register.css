@@ -1,0 +1,31 @@
+#firstGrid
+{
+    -fx-background-color: #151928;
+}
+
+#subtitle-text
+{
+    -fx-text-fill: white;
+}
+
+#role_label
+{
+    -fx-text-fill: white;
+}
+
+.button
+{
+    -fx-pref-width: 115px;
+    -fx-pref-height: 20px;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+#register_button
+{
+    -fx-background-color: green;
+}
+#back_button
+{
+    -fx-background-color: gray;
+}
