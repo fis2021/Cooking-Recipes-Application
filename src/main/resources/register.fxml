@@ -4,30 +4,51 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" prefHeight="400" prefWidth="600"
-          vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal"
-          fx:controller="org.tnh.controllers.RegistrationController">
+<GridPane fx:id="firstGrid" xmlns:fx="http://javafx.com/fxml"
+          alignment="center" vgap="10" hgap="10" prefHeight="400" prefWidth="600"
+          fx:controller="org.tnh.controllers.RegistrationController"
+          stylesheets="styling/register.css">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
     </padding>
-    <Text id="title-text" text="Create new account" GridPane.columnIndex="0" GridPane.columnSpan="2"
-          GridPane.rowIndex="0"/>
 
-    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <GridPane id="secondGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        </padding>
 
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label id="subtitle-text" text="Create your account. It's free and only takes a minute"
+               GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
 
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="firstName" promptText="First Name"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
 
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <TextField fx:id="lastName" promptText="Last Name"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-    <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="email" promptText="Email"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" />
 
-    <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-    </ChoiceBox>
+        <TextField fx:id="username" promptText="Username"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
 
-    <Text fx:id="registrationMessage" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
-        <Button onAction="#handleRegisterAction" text="Register"/>
-    </HBox>
+        <PasswordField fx:id="password" promptText="Password"
+                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+
+        <PasswordField fx:id="confirmPassword" promptText="Confirm Password"
+                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <GridPane id="thirdGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <Label id="role_label" text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        </ChoiceBox>
+
+        <Text fx:id="registrationMessage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button fx:id="register_button" onAction="#handleRegisterAction" text="Register"/>
+            <Button fx:id="back_button" onAction="#handleBackFirstPage" text="Back"/>
+        </HBox>
+    </GridPane>
+
 </GridPane>
