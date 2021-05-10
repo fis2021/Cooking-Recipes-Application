@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:id="mainGrid" vgap="10" hgap="220"
+          xmlns:fx="http://javafx.com/fxml"
+        stylesheets="styling/junior.css">
+    <padding>
+        <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+    </padding>
+    <GridPane id="buttonsGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <padding>
+            <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+        </padding>
+        <Button fx:id ="saved_recipes_button" text="Saved recipes" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Button fx:id ="logout_button" text="Logout" alignment="TOP_CENTER" GridPane.rowIndex="35" GridPane.columnIndex="0"/>
+    </GridPane>
+    <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
+        <GridPane alignment="CENTER" GridPane.rowIndex="10" GridPane.columnIndex="0">
+            <Label id="title" text="Junior Chef" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="search" promptText="Search"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        </GridPane>
+    </GridPane>
+</GridPane>
