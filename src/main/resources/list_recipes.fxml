@@ -13,7 +13,7 @@
         <padding>
             <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
         </padding>
-        <Button fx:id ="logout_button" onAction="#handleBackFirstPage" text="Logout" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Button fx:id ="logout_button" onAction="#handleBackFirstPage" text="Back" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     </GridPane>
 
 </GridPane>
