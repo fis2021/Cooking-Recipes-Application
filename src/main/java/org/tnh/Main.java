@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tnh.services.FileSystemService;
+import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 
 import java.nio.file.Files;
@@ -18,6 +19,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         initDirectory();
         UserService.initDatabase();
+        RecipeService.initDatabase();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
         primaryStage.setTitle("Cooking-Recipes-Application");
         primaryStage.setScene(new Scene(root, 900, 550));

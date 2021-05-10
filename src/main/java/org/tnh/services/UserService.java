@@ -20,7 +20,7 @@ public class UserService {
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("registration-example.db").toFile())
+                .filePath(getPathToFile("users.db").toFile())
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
@@ -30,7 +30,7 @@ public class UserService {
         uncompletedFields(firstName, lastName, email,username, password, confirmPassword, role);
         checkUserDoesNotAlreadyExist(username);
         passwordNoUpperCase(password);
-        passwordNotEqualConfirmPassowrd(password, confirmPassword);
+        passwordNotEqualConfirmPassword(password, confirmPassword);
         userRepository.insert(new User(firstName, lastName, email, username, encodePassword(username, password), confirmPassword, role));
     }
 
@@ -75,10 +75,10 @@ public class UserService {
         if(!matchFound) throw new PasswordNoUpperCaseException("The password must have one upper case!");
     }
 
-    public static void passwordNotEqualConfirmPassowrd(String password, String confirmPassword) throws ConfirmPasswordAndPasswordNotEqualException
+    public static void passwordNotEqualConfirmPassword(String password, String confirmPassword) throws ConfirmPasswordAndPasswordNotEqualException
     {
         if(!password.equals(confirmPassword))
-            throw new ConfirmPasswordAndPasswordNotEqualException("The 2 password firlds are not the same!");
+            throw new ConfirmPasswordAndPasswordNotEqualException("The 2 password fields are not the same!");
     }
 
     public static void contValid(String username, String password) throws InvalidUsernameException, InvalidPasswordException
@@ -113,12 +113,12 @@ public class UserService {
 
     public static String getUserRole(String username)
     {
-        String role = "";
+        StringBuilder role = new StringBuilder();
         for (User user : userRepository.find())
             if (Objects.equals(username, user.getUsername()))
-                role = role + user.getRole();
+                role.append(user.getRole());
 
-        return role;
+        return role.toString();
     }
 
     private static String encodePassword(String salt, String password) {

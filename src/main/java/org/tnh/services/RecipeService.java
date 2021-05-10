@@ -17,7 +17,7 @@ public class RecipeService {
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
-                .filePath(getPathToFile("registration-example.db").toFile())
+                .filePath(getPathToFile("recipes.db").toFile())
                 .openOrCreate("test", "test");
 
         recipeRepository = database.getRepository(Recipe.class);
