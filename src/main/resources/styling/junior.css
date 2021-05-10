@@ -1,0 +1,33 @@
+#mainGrid
+{
+    -fx-background-image: url("images/logo.png");
+}
+
+#title
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 450px;
+    -fx-pref-height: 100px;
+    -fx-font-weight: BOLD;
+    -fx-alignment: CENTER;
+    -fx-font-size: 50;
+}
+
+.button
+{
+    -fx-pref-width: 130px;
+    -fx-pref-height: 15px;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#saved_recipes_button
+{
+    -fx-background-color: gray;
+}
+
+#logout_button
+{
+    -fx-background-color: red;
+}

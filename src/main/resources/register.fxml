@@ -41,8 +41,7 @@
 
     <GridPane id="thirdGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" vgap="10" hgap="10">
         <Label id="role_label" text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-        </ChoiceBox>
+        <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
         <Text fx:id="registrationMessage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
         <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
