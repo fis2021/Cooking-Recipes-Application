@@ -11,6 +11,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.tnh.exceptions.ConfirmPasswordAndPasswordNotEqualException;
+import org.tnh.exceptions.PasswordNoUpperCaseException;
+import org.tnh.exceptions.UncompletedFieldsException;
 import org.tnh.exceptions.UsernameAlreadyExistsException;
 import org.tnh.services.UserService;
 
@@ -41,6 +44,7 @@ public class RegistrationController {
     @FXML
     public void initialize() {
         role.getItems().addAll("Junior Chef", "Head Chef");
+        role.setValue("Junior Chef");
     }
 
     @FXML
@@ -48,8 +52,14 @@ public class RegistrationController {
         try {
             UserService.addUser(firstName.getText(), lastName.getText(), email.getText(), username.getText(), password.getText(), confirmPassword.getText(), role.getValue());
             registrationMessage.setText("Account created successfully!");
-        } catch (UsernameAlreadyExistsException e) {
-            registrationMessage.setText(e.getMessage());
+        } catch(UncompletedFieldsException e1) {
+            registrationMessage.setText(e1.getMessage());
+        } catch (UsernameAlreadyExistsException e2) {
+            registrationMessage.setText(e2.getMessage());
+        } catch(PasswordNoUpperCaseException e3) {
+            registrationMessage.setText(e3.getMessage());
+        } catch (ConfirmPasswordAndPasswordNotEqualException e4) {
+            registrationMessage.setText(e4.getMessage());
         }
     }
 
