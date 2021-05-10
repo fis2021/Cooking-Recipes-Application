@@ -54,4 +54,10 @@ public class RecipeService {
 
     }
 
+    public static void displayRecipes() {
+        for (Recipe recipe : recipeRepository.find()) {
+            System.out.println(recipe);
+        }
+    }
+
 }

@@ -18,9 +18,7 @@ public class Recipe {
     }
 
     public String toString() {
-
         return name + "\n\nNumber of calories: " + calories + "\n\nTime: " + time + " minutes\n\n" + instructions;
-
     }
 
     public String getName() {
