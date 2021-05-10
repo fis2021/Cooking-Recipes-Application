@@ -38,9 +38,9 @@ public class RecipeController {
     }
 
     public void handleBackFirstPage(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Cooking-Recipes-Application");
+        stage.setTitle("Head Chef");
         stage.setScene(new Scene(root, 900, 550));
         stage.show();
     }

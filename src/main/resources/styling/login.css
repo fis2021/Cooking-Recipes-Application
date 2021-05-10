@@ -5,7 +5,7 @@
 
 .button
 {
-    -fx-pref-width: 115px;
+    -fx-pref-width: 117px;
     -fx-pref-height: 20px;
     -fx-font-size: 15;
     -fx-font-weight: bold;
@@ -15,6 +15,11 @@
 .text-field
 {
     -fx-border-color: gray;
+}
+
+#recipes_button
+{
+    -fx-background-color: gray;
 }
 
 #login_button

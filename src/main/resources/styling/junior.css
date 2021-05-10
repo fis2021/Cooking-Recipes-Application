@@ -27,6 +27,11 @@
     -fx-background-color: gray;
 }
 
+#recipes_button
+{
+    -fx-background-color: gray;
+}
+
 #logout_button
 {
     -fx-background-color: red;
