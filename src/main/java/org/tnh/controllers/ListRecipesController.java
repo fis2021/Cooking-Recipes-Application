@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class JuniorChefController {
-    public void handleLogout(ActionEvent event) throws Exception {
+public class ListRecipesController {
+
+    public void handleBackFirstPage(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cooking-Recipes-Application");
@@ -18,11 +19,4 @@ public class JuniorChefController {
         stage.show();
     }
 
-    public void handleShowRecipes(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("List of recipes");
-        stage.setScene(new Scene(root, 900, 550));
-        stage.show();
-    }
 }
