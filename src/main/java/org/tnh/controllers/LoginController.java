@@ -57,4 +57,12 @@ public class LoginController
             loginMessage.setText(e.getMessage());
         }
     }
+//de modificat
+    public void handleShowRecipes(ActionEvent event) throws Exception {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("recipe.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("Recipes");
+        stage.setScene(new Scene(root, 900, 550));
+        stage.show();
+    }
 }
