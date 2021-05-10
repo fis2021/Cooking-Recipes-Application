@@ -21,9 +21,6 @@ import java.util.Objects;
 
 public class RegistrationController {
 
-    private Stage stage;
-    private Parent root;
-
     @FXML
     private Text registrationMessage;
     @FXML
@@ -52,20 +49,14 @@ public class RegistrationController {
         try {
             UserService.addUser(firstName.getText(), lastName.getText(), email.getText(), username.getText(), password.getText(), confirmPassword.getText(), role.getValue());
             registrationMessage.setText("Account created successfully!");
-        } catch(UncompletedFieldsException e1) {
-            registrationMessage.setText(e1.getMessage());
-        } catch (UsernameAlreadyExistsException e2) {
-            registrationMessage.setText(e2.getMessage());
-        } catch(PasswordNoUpperCaseException e3) {
-            registrationMessage.setText(e3.getMessage());
-        } catch (ConfirmPasswordAndPasswordNotEqualException e4) {
-            registrationMessage.setText(e4.getMessage());
+        } catch(UncompletedFieldsException | UsernameAlreadyExistsException | PasswordNoUpperCaseException | ConfirmPasswordAndPasswordNotEqualException e) {
+            registrationMessage.setText(e.getMessage());
         }
     }
 
     public void handleBackFirstPage(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cooking-Recipes-Application");
         stage.setScene(new Scene(root, 900, 550));
         stage.show();
