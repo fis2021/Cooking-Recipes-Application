@@ -15,7 +15,7 @@
         <padding>
             <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
         </padding>
-        <Button fx:id ="saved_recipes_button" text="Saved recipes" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Button fx:id ="saved_recipes_button" onAction="#handleSavedRecipes" text="Saved recipes" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <Button fx:id ="recipes_button" onAction="#handleShowRecipes" text="Show recipes" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <Button fx:id ="logout_button" onAction="#handleLogout" text="Logout" alignment="TOP_CENTER" GridPane.rowIndex="35" GridPane.columnIndex="0"/>
     </GridPane>
@@ -24,6 +24,9 @@
             <Label id="title" text="Junior Chef" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
             <TextField fx:id="search" promptText="Search"
                        GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Button fx:id ="enter_button" text="Enter"/>
+            </HBox>
         </GridPane>
     </GridPane>
 </GridPane>

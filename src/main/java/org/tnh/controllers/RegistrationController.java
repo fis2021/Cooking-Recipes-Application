@@ -54,7 +54,7 @@ public class RegistrationController {
         }
     }
 
-    public void handleBackFirstPage(ActionEvent event) throws Exception {
+    public void handleBackFirstPageAction(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cooking-Recipes-Application");

@@ -18,10 +18,18 @@ public class JuniorChefController {
         stage.show();
     }
 
+    public void handleSavedRecipes(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("saved_recipes.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("List of saved recipes");
+        stage.setScene(new Scene(root, 900, 550));
+        stage.show();
+    }
+
     public void handleShowRecipes(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("List of recipes");
+        stage.setTitle("Junior Chef - List of recipes");
         stage.setScene(new Scene(root, 900, 550));
         stage.show();
     }

@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 
 <GridPane fx:id="mainGrid"
-          fx:controller="org.tnh.controllers.ListRecipesController"
+          fx:controller="org.tnh.controllers.SavedRecipesController"
           xmlns:fx="http://javafx.com/fxml"
           vgap="10" hgap="220">
 

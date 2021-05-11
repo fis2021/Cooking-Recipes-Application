@@ -11,10 +11,24 @@ import java.util.Objects;
 
 public class ListRecipesController {
 
-    public void handleBackFirstPage(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+    public void handleBackAction(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Cooking-Recipes-Application");
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+        if(stage.getTitle().equals("Head Chef - List of recipes"))
+        {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
+            stage.setTitle("Head Chef");
+        }
+        if(stage.getTitle().equals("Junior Chef - List of recipes"))
+        {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
+            stage.setTitle("Junior Chef");
+        }
+        if(stage.getTitle().equals("List of recipes"))
+        {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+            stage.setTitle("Cooking-Recipes-Application");
+        }
         stage.setScene(new Scene(root, 900, 550));
         stage.show();
     }

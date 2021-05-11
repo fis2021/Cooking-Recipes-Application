@@ -29,15 +29,23 @@ public class HeadChefController {
         stage.show();
     }
 
-    public void handleShowRecipes(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
+    public void handleShowOwnRecipesAction(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("List of recipes");
+        stage.setTitle("List of own recipes");
         stage.setScene(new Scene(root, 900, 550));
         stage.show();
     }
 
-    public void handleLogout(ActionEvent event) throws Exception {
+    public void handleShowRecipesAction(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Head Chef - List of recipes");
+        stage.setScene(new Scene(root, 900, 550));
+        stage.show();
+    }
+
+    public void handleLogoutAction(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cooking-Recipes-Application");

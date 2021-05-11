@@ -14,7 +14,7 @@ import org.tnh.services.RecipeService;
 
 import java.util.Objects;
 
-public class RecipeController {
+public class RecipeCreationController {
 
     @FXML
     private Text recipeMessage;
@@ -37,7 +37,7 @@ public class RecipeController {
         }
     }
 
-    public void handleBackFirstPage(ActionEvent event) throws Exception {
+    public void handleBackAction(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Head Chef");

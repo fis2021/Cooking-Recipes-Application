@@ -1,6 +1,7 @@
 package org.tnh.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Recipe {
 
@@ -17,6 +18,11 @@ public class Recipe {
         this.instructions = instructions;
     }
 
+    public Recipe()
+    {
+
+    }
+
     public String toString() {
         return name + "\n\nNumber of calories: " + calories + "\n\nTime: " + time + " minutes\n\n" + instructions;
     }
@@ -28,5 +34,4 @@ public class Recipe {
     public void setName(String name) {
         this.name = name;
     }
-
 }

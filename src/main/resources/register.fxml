@@ -46,7 +46,7 @@
         <Text fx:id="registrationMessage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
         <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <Button fx:id="register_button" onAction="#handleRegisterAction" text="Register"/>
-            <Button fx:id="back_button" onAction="#handleBackFirstPage" text="Back"/>
+            <Button fx:id="back_button" onAction="#handleBackFirstPageAction" text="Back"/>
         </HBox>
     </GridPane>
 

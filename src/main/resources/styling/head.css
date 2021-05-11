@@ -22,7 +22,22 @@
     -fx-text-fill: white;
 }
 
+#enter_button
+{
+    -fx-pref-width: 60px;
+    -fx-pref-height: 5px;
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: gray;
+}
+
 #create_button
+{
+    -fx-background-color: gray;
+}
+
+#own_recipes_button
 {
     -fx-background-color: gray;
 }
