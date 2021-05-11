@@ -25,7 +25,7 @@ public class HeadChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("create_recipe.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Create recipe");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 
@@ -33,7 +33,7 @@ public class HeadChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("List of own recipes");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 
@@ -41,7 +41,7 @@ public class HeadChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Head Chef - List of recipes");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 
@@ -49,7 +49,7 @@ public class HeadChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cooking-Recipes-Application");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 }

@@ -14,7 +14,7 @@ public class JuniorChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Cooking-Recipes-Application");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 
@@ -22,7 +22,7 @@ public class JuniorChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("saved_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("List of saved recipes");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 
@@ -30,7 +30,7 @@ public class JuniorChefController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Junior Chef - List of recipes");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 }

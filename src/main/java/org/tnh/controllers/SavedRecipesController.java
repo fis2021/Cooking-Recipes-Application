@@ -14,7 +14,7 @@ public class SavedRecipesController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Junior Chef");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 }
