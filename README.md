@@ -18,11 +18,11 @@ They can search in this list by introducing words contained in the recipes name.
 - [Java 16](https://www.oracle.com/java/technologies/javase-downloads.html)
 - [JavaFX (as GUI)](https://openjfx.io/openjfx-docs/)
 - [Maven (Build Tool)](https://maven.apache.org/)
-- [SQLite (as Database)](https://www.sqlite.org/index.html)
+- [Nitrite Java](https://www.dizitart.org/nitrite-database.html) (as Database)
 
 ## Registration
-Anyone can search for recipes. In order to rate and comment on a recipe, the user needs to first register
-into the application by selecting one of the 2 roles:
+Anyone can search for recipes. In order to rate and comment on a recipe, 
+the user needs to first register into the application by selecting one of the 2 roles:
 - Junior Chef
 - Head Chef
 
@@ -30,15 +30,15 @@ Both roles require a unique username, a password and the basic information
 like full name and email address.
 
 ## Junior Chef
-After the Junior Chef logs in, besides the benefits of a logged in user, he can save
-his favourite recipes to use them later.
+A Junior Chef can save his favourite recipes to view them later.
 
-Also, after logging in, he can see his list of saved recipes. He can add or remove recipes from it.
+He can also see his list of saved recipes, having the ability to add or remove recipes from it.
 
 ## Head Chef
-A Head Chef can create new recipes or add changes to his recipes.
+A Head Chef can create new recipes. They are added to the recipe list.
 
-Also, a logged in Head Chef can check his list of recipes to see how well they are doing (by their rating and comments of other Chefs).
+He can also check his own recipes to see how well they are doing 
+(by their rating and comments of other Chefs).
 
 ## Issue Tracking
 For the purpose of demonstrating a complete Agile Workflow, we

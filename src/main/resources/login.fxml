@@ -43,7 +43,7 @@
         <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
             <Button fx:id ="register_button" onAction="#handleCreateAccountAction" text="Register"/>
         </HBox>
-        <Text fx:id="loginMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+        <Text fx:id="loginMessage" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
     </GridPane>
 </GridPane>
 

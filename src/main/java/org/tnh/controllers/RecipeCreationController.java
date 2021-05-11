@@ -41,7 +41,7 @@ public class RecipeCreationController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Head Chef");
-        stage.setScene(new Scene(root, 900, 550));
+        stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
 }
