@@ -5,12 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.tnh.model.Recipe;
 import org.tnh.services.FileSystemService;
 import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Main extends Application {

@@ -27,7 +27,7 @@
         <TextField fx:id="calories" promptText="Calories"
                    GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-        <TextField fx:id="time" promptText="Time"
+        <TextField fx:id="time" promptText="Time (minutes)"
                    GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" />
 
         <TextField fx:id="instructions" promptText="Instructions"

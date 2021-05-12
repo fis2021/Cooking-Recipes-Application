@@ -5,6 +5,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.tnh.exceptions.*;
 import org.tnh.model.Recipe;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,6 +53,14 @@ public class RecipeService {
         if(!matchFound3) throw new UncompletedFieldsException();
         if(!matchFound4) throw new UncompletedFieldsException();
 
+    }
+
+    public static ArrayList<Recipe> populateData() {
+        ArrayList<Recipe> recipes = new ArrayList();
+        for (Recipe recipe : recipeRepository.find()) {
+            recipes.add(recipe);
+        }
+        return recipes.size() == 0 ? null : recipes;
     }
 
     public static void displayRecipes() {
