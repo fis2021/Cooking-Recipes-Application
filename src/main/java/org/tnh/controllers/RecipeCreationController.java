@@ -11,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tnh.exceptions.*;
 import org.tnh.services.RecipeService;
-
 import java.util.Objects;
 
 public class RecipeCreationController {

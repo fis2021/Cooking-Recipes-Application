@@ -16,7 +16,6 @@ import org.tnh.exceptions.PasswordNoUpperCaseException;
 import org.tnh.exceptions.UncompletedFieldsException;
 import org.tnh.exceptions.UsernameAlreadyExistsException;
 import org.tnh.services.UserService;
-
 import java.util.Objects;
 
 public class RegistrationController {

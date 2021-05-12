@@ -1,8 +1,5 @@
 package org.tnh.model;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 public class Recipe {
 
     private String name;

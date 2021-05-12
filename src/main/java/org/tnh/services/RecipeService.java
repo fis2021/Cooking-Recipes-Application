@@ -4,7 +4,6 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.tnh.exceptions.*;
 import org.tnh.model.Recipe;
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -52,7 +51,14 @@ public class RecipeService {
         if(!matchFound2) throw new UncompletedFieldsException();
         if(!matchFound3) throw new UncompletedFieldsException();
         if(!matchFound4) throw new UncompletedFieldsException();
+    }
 
+    public static void uncompletedNameField(String name) throws UncompletedFieldsException
+    {
+        Pattern pattern = Pattern.compile("[\\S+]");
+        Matcher matcher1 = pattern.matcher(name);
+        boolean matchFound1 = matcher1.find();
+        if(!matchFound1) throw new UncompletedFieldsException();
     }
 
     public static ArrayList<Recipe> populateData() {
@@ -63,10 +69,14 @@ public class RecipeService {
         return recipes.size() == 0 ? null : recipes;
     }
 
-    public static void displayRecipes() {
+    public static ArrayList<Recipe> populateDataSearch(String name) {
+        ArrayList<Recipe> recipes = new ArrayList();
         for (Recipe recipe : recipeRepository.find()) {
-            System.out.println(recipe);
+            if (name == recipe.getName()) {
+                recipes.add(recipe);
+            }
         }
+        return recipes.size() == 0 ? null : recipes;
     }
 
 }

@@ -16,7 +16,7 @@ import org.tnh.model.Recipe;
 import org.tnh.services.RecipeService;
 import java.util.Objects;
 
-public class ListRecipesController {
+public class SearchController {
 
     @FXML
     private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions;
@@ -33,7 +33,7 @@ public class ListRecipesController {
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
-        for(var i : RecipeService.populateData()) {
+        for(var i : RecipeService.populateDataSearch(LoginController.getSearch())) {
             System.out.println(i.getName());
             recipes_obs.add(i);
         }

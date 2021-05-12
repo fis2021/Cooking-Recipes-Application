@@ -28,7 +28,7 @@
                    GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
 
         <HBox spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="0">
-            <Button fx:id ="enter_button" text="Enter"/>
+            <Button fx:id ="enter_button" onAction="#handleSearch" text="Enter"/>
         </HBox>
 
         <TextField fx:id="username" promptText="Username"
