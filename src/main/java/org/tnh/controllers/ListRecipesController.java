@@ -33,10 +33,7 @@ public class ListRecipesController {
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
-        for(var i : RecipeService.populateData()) {
-            System.out.println(i.getName());
-            recipes_obs.add(i);
-        }
+        recipes_obs.addAll(RecipeService.populateData());
         recipesTableView.setItems(recipes_obs);
     }
 

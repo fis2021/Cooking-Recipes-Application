@@ -83,7 +83,9 @@ public class LoginController
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
         } catch(UncompletedFieldsException e) {
-            System.out.println(e.getMessage());
+
+
+
         }
     }
 }

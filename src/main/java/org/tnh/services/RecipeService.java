@@ -62,7 +62,7 @@ public class RecipeService {
     }
 
     public static ArrayList<Recipe> populateData() {
-        ArrayList<Recipe> recipes = new ArrayList();
+        ArrayList<Recipe> recipes = new ArrayList<>();
         for (Recipe recipe : recipeRepository.find()) {
             recipes.add(recipe);
         }
@@ -70,9 +70,9 @@ public class RecipeService {
     }
 
     public static ArrayList<Recipe> populateDataSearch(String name) {
-        ArrayList<Recipe> recipes = new ArrayList();
+        ArrayList<Recipe> recipes = new ArrayList<>();
         for (Recipe recipe : recipeRepository.find()) {
-            if (name == recipe.getName()) {
+            if (name.equals(recipe.getName())) {
                 recipes.add(recipe);
             }
         }
