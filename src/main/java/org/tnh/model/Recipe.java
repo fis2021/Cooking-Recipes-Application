@@ -26,20 +26,8 @@ public class Recipe {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public String getInstructions() {
-        return instructions;
-    }
-
-    public String getCalories() {
-        return calories;
     }
 
     public String getTime() {
@@ -48,14 +36,6 @@ public class Recipe {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
-    }
-
-    public void setCalories(String calories) {
-        this.calories = calories;
     }
 
     public void setTime(String time) {
