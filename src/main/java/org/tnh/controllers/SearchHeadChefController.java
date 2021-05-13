@@ -12,7 +12,7 @@ import org.tnh.services.RecipeService;
 
 import java.util.Objects;
 
-public class SearchController extends AbstractListRecipesController {
+public class SearchHeadChefController extends AbstractListRecipesController {
 
     @FXML
     private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions;
@@ -29,7 +29,7 @@ public class SearchController extends AbstractListRecipesController {
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
-        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(LoginController.getSearchValue())));
+        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(HeadChefController.getSearchValue())));
         recipesTableView.setItems(recipes_obs);
     }
 

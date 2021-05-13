@@ -13,19 +13,14 @@ public abstract class AbstractListRecipesController {
 
     public void handleBackAction(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
-        if(stage.getTitle().equals("Head Chef - List of recipes"))
-        {
+        Parent root;
+        if(stage.getTitle().contains("Head Chef")) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
             stage.setTitle("Head Chef");
-        }
-        if(stage.getTitle().equals("Junior Chef - List of recipes"))
-        {
+        } else if(stage.getTitle().contains("Junior Chef")) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
             stage.setTitle("Junior Chef");
-        }
-        if(stage.getTitle().equals("List of recipes"))
-        {
+        } else {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
             stage.setTitle("Cooking-Recipes-Application");
         }

@@ -18,8 +18,8 @@ import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 import java.util.Objects;
 
-public class LoginController
-{
+public class LoginController {
+
     private Stage stage;
     private Parent root;
 
@@ -86,7 +86,7 @@ public class LoginController
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("List of recipes");
+            stage.setTitle("Search");
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
         } catch(UncompletedFieldsException e) {
