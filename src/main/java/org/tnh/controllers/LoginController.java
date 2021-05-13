@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import org.tnh.exceptions.InvalidPasswordException;
 import org.tnh.exceptions.InvalidUsernameException;
 import org.tnh.exceptions.UncompletedFieldsException;
+import org.tnh.model.LoggedUser;
+import org.tnh.model.User;
 import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 import java.util.Objects;
@@ -47,7 +49,7 @@ public class LoginController
     {
         try {
             UserService.loginUncompletedFields(username.getText(), password.getText());
-            UserService.contValid(username.getText(), password.getText());
+            LoggedUser.loggedUser = UserService.loggedUser(username.getText(), password.getText());
             loginMessage.setText("Successful Log In!");
             if (UserService.getUserRole(username.getText()).equals("Junior Chef")) {
                 root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
@@ -88,4 +90,5 @@ public class LoginController
 
         }
     }
+
 }
