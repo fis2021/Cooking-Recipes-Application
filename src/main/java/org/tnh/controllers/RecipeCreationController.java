@@ -30,7 +30,7 @@ public class RecipeCreationController {
     @FXML
     public void handleRegisterAction() {
         try {
-            RecipeService.addRecipe(LoggedUser.loggedUser.getUsername(), name.getText(), calories.getText(), time.getText(), instructions.getText());
+            RecipeService.addRecipe(LoggedUser.getLoggedUser().getUsername(), name.getText(), calories.getText(), time.getText(), instructions.getText());
             recipeMessage.setText("Recipe added successfully!");
         } catch(UncompletedFieldsException | RecipeAlreadyExistsException e) {
             recipeMessage.setText(e.getMessage());

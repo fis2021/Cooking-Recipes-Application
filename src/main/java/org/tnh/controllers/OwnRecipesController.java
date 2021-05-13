@@ -43,7 +43,7 @@ public class OwnRecipesController {
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
-        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataCreatedRecipesList(LoggedUser.loggedUser.getUsername())));
+        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataCreatedRecipesList(LoggedUser.getLoggedUser().getUsername())));
         recipesTableView.setItems(recipes_obs);
     }
 
