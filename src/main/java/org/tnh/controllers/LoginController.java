@@ -29,10 +29,16 @@ public class LoginController
     @FXML
     private PasswordField password;
     @FXML
-    private static TextField search;
+    private TextField search;
 
-    public static String getSearch() {
-        return search.getText();
+    public static String getSearchValue() {
+        return searchValue;
+    }
+
+    private static String searchValue;
+
+    public void setSearchValue () {
+        searchValue = search.getText();
     }
 
     public void handleCreateAccountAction(ActionEvent event) throws Exception {
@@ -76,6 +82,7 @@ public class LoginController
     public void handleSearch(ActionEvent event) throws Exception {
         try {
             RecipeService.uncompletedNameField(search.getText());
+            setSearchValue();
 
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

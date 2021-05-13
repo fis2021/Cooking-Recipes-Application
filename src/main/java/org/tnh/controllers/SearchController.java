@@ -28,7 +28,7 @@ public class SearchController extends AbstractListRecipesController {
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
-        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(LoginController.getSearch())));
+        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(LoginController.getSearchValue())));
         recipesTableView.setItems(recipes_obs);
     }
 
