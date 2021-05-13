@@ -72,7 +72,7 @@ public class RecipeService {
     public static ArrayList<Recipe> populateDataSearch(String name) {
         ArrayList<Recipe> recipes = new ArrayList<>();
         for (Recipe recipe : recipeRepository.find()) {
-            if (name.equals(recipe.getName())) {
+            if (recipe.getName().toLowerCase().contains(name.toLowerCase())) {
                 recipes.add(recipe);
             }
         }
