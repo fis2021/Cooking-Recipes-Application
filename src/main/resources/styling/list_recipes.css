@@ -1,0 +1,28 @@
+#mainGrid
+{
+    -fx-background-image: url("images/search.jpg");
+}
+
+#buttonGrid {
+    -fx-pref-height: 720px;
+}
+
+#listGrid {
+    -fx-pref-width: 490px;
+    -fx-pref-height: 720px;
+}
+
+.button
+{
+    -fx-pref-width: 117px;
+    -fx-pref-height: 20px;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#back_button
+{
+    -fx-background-color: gray;
+    -fx-alignment: CENTER;
+}

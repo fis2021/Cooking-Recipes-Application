@@ -94,9 +94,9 @@ public class UserService {
             }
         }
         if(ok1==0)
-            throw new InvalidUsernameException("Introduced username is incorrect");
+            throw new InvalidUsernameException("Invalid username");
         if(ok2==0)
-            throw new InvalidPasswordException("Introduced password is incorrect");
+            throw new InvalidPasswordException("Invalid password");
         return null;
     }
 
