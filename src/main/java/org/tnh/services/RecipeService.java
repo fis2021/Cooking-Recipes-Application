@@ -23,10 +23,10 @@ public class RecipeService {
         recipeRepository = database.getRepository(Recipe.class);
     }
 
-    public static void addRecipe(String name, String calories, String time, String instructions) throws UncompletedFieldsException, RecipeAlreadyExistsException {
+    public static void addRecipe(String username, String name, String calories, String time, String instructions) throws UncompletedFieldsException, RecipeAlreadyExistsException {
         uncompletedFields(name, calories, time, instructions);
         checkRecipeDoesNotAlreadyExist(name);
-        recipeRepository.insert(new Recipe(name, calories, time, instructions));
+        recipeRepository.insert(new Recipe(username, name, calories, time, instructions));
     }
 
     private static void checkRecipeDoesNotAlreadyExist(String name) throws RecipeAlreadyExistsException {
@@ -73,6 +73,16 @@ public class RecipeService {
         ArrayList<Recipe> recipes = new ArrayList<>();
         for (Recipe recipe : recipeRepository.find()) {
             if (name.equals(recipe.getName())) {
+                recipes.add(recipe);
+            }
+        }
+        return recipes.size() == 0 ? null : recipes;
+    }
+
+    public static ArrayList<Recipe> populateDataCreatedRecipesList(String username) {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        for (Recipe recipe : recipeRepository.find()) {
+            if (username.equals(recipe.getUsername())) {
                 recipes.add(recipe);
             }
         }

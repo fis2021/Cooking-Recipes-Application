@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tnh.exceptions.*;
+import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 import java.util.Objects;
 
@@ -29,7 +30,7 @@ public class RecipeCreationController {
     @FXML
     public void handleRegisterAction() {
         try {
-            RecipeService.addRecipe(name.getText(), calories.getText(), time.getText(), instructions.getText());
+            RecipeService.addRecipe(LoggedUser.getLoggedUser().getUsername(), name.getText(), calories.getText(), time.getText(), instructions.getText());
             recipeMessage.setText("Recipe added successfully!");
         } catch(UncompletedFieldsException | RecipeAlreadyExistsException e) {
             recipeMessage.setText(e.getMessage());
