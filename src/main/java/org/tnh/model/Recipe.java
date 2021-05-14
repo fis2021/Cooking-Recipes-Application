@@ -29,19 +29,25 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    public Recipe(UUID recipe_id, String username, String name, String calories, String time, String instructions) {
+    public Recipe(UUID recipe_id, String username, String name, String calories, String time, String instructions,
+                  String rating, int total_rating, ArrayList<String> raters, ArrayList<String> admirers) {
+
         this.recipe_id = recipe_id;
         this.username = username;
         this.name = name;
         this.calories = calories;
         this.time = time;
         this.instructions = instructions;
+        this.rating = rating;
+        this.total_rating = total_rating;
+        this.raters = raters;
+        this.admirers = admirers;
     }
 
     public Recipe() { }
 
     public Recipe copyData() {
-        return new Recipe(recipe_id, username, name, calories, time, instructions);
+        return new Recipe(recipe_id, username, name, calories, time, instructions, rating, total_rating, raters, admirers);
     }
 
     public String toString() {
@@ -64,6 +70,14 @@ public class Recipe {
         Recipe r = (Recipe) o;
 
         return name.equals(r.name);
+    }
+
+    public void addAdmirer(String name) {
+        if (admirers.contains(name)) {
+            System.out.println("You already saved this recipe!");
+        } else {
+            admirers.add(name);
+        }
     }
 
     public void addRating(String rater, int score) {
@@ -120,11 +134,4 @@ public class Recipe {
         return admirers;
     }
 
-    public void addAdmirer(String name) {
-        admirers.add(name);
-    }
-
-    public String getRating() {
-        return rating;
-    }
 }
