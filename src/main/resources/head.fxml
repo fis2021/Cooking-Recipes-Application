@@ -13,12 +13,44 @@
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
         </padding>
+
         <Button fx:id="create_button" onAction="#handleCreateRecipeAction" text="Create recipe" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <Button fx:id="own_recipes_button" onAction="#handleShowOwnRecipesAction" text="Own recipes" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <Button fx:id="recipes_button" onAction="#handleShowRecipesAction" text="Show recipes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <Button fx:id="rate_recipe_button" onAction="#handleRateRecipe" text="Rate recipe" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-        <Button fx:id="change_recipe_button" onAction="#handleChangeRecipe" text="Change recipe" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-        <Button fx:id="logout_button" alignment="BOTTOM_LEFT" onAction="#handleLogoutAction" text="Logout" GridPane.columnIndex="0" GridPane.rowIndex="45" />
+        <Text fx:id="createMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+
+        <Button fx:id="own_recipes_button" onAction="#handleShowOwnRecipesAction" text="Own recipes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Text fx:id="ownedMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+
+        <Button fx:id="recipes_button" onAction="#handleShowRecipesAction" text="Show recipes" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Text fx:id="showMessage" fill="BLACK" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+
+        <Button fx:id="rate_recipe_button" onAction="#handleRateRecipe" text="Rate recipe" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Text fx:id="rateMessage" fill="BLACK" GridPane.columnIndex="0" GridPane.rowIndex="7">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+
+        <Button fx:id="change_recipe_button" onAction="#handleChangeRecipe" text="Change recipe" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+        <Text fx:id="modifyMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="9">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+
+        <Button fx:id="logout_button" alignment="BOTTOM_LEFT" onAction="#handleLogoutAction" text="Logout" GridPane.columnIndex="0" GridPane.rowIndex="35" />
+
       <columnConstraints>
          <ColumnConstraints />
       </columnConstraints>

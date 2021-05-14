@@ -13,7 +13,7 @@ public class Recipe {
     private String calories;
     private String time;
     private String instructions;
-    private String rating = "0";
+    private String rating = "not yet rated";
     private int score = 0;
     @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<String> raters = new ArrayList<>();

@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tnh.exceptions.CouldNotFindRecipeException;
+import org.tnh.exceptions.EmptyDataBaseException;
 import org.tnh.exceptions.UncompletedFieldsException;
 import org.tnh.services.RecipeService;
 
@@ -22,6 +23,16 @@ public class HeadChefController {
     private Stage stage;
     private Parent root;
 
+    @FXML
+    private Text createMessage;
+    @FXML
+    private Text ownedMessage;
+    @FXML
+    private Text showMessage;
+    @FXML
+    private Text rateMessage;
+    @FXML
+    private Text modifyMessage;
     @FXML
     private Text searchMessage;
     @FXML
@@ -47,19 +58,29 @@ public class HeadChefController {
     }
 
     public void handleShowOwnRecipesAction(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Head Chef - List of owned recipes");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        //try {
+            //RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Head Chef - List of owned recipes");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        //} catch (EmptyDataBaseException e) {
+        //    showMessage.setText(e.getMessage());
+        //}
     }
 
     public void handleShowRecipesAction(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Head Chef - List of recipes");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Head Chef - List of recipes");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (EmptyDataBaseException e) {
+            showMessage.setText(e.getMessage());
+        }
     }
 
     public void handleLogoutAction(ActionEvent event) throws Exception {
@@ -86,19 +107,29 @@ public class HeadChefController {
     }
 
     public void handleRateRecipe(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("rate_recipe.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Head Chef - Rate");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("rate_recipe.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Head Chef - Rate");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (EmptyDataBaseException e) {
+            rateMessage.setText(e.getMessage());
+        }
     }
 
     public void handleChangeRecipe(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Head Chef - Search the recipe you want to change");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        //try {
+            //RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Head Chef - Search the recipe you want to change");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        //} catch (EmptyDataBaseException e) {
+        //    rateMessage.setText(e.getMessage());
+        //}
     }
 
 }

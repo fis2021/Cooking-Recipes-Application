@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.tnh.exceptions.CouldNotFindRecipeException;
 import org.tnh.exceptions.EmptyDataBaseException;
 import org.tnh.exceptions.UncompletedFieldsException;
+import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 
 import java.util.Objects;
@@ -22,7 +23,13 @@ public class JuniorChefController {
     private Parent root;
 
     @FXML
+    private Text savedMessage;
+    @FXML
     private Text showMessage;
+    @FXML
+    private Text saveMessage;
+    @FXML
+    private Text rateMessage;
     @FXML
     private Text searchMessage;
     @FXML
@@ -47,11 +54,16 @@ public class JuniorChefController {
     }
 
     public void handleSavedRecipes(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("saved_recipes.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Junior Chef - Saved recipes");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.emptySavedDataBase(LoggedUser.getLoggedUser().getUsername());
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("saved_recipes.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Junior Chef - Saved recipes");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (EmptyDataBaseException e) {
+           savedMessage.setText(e.getMessage());
+        }
     }
 
     public void handleShowRecipes(ActionEvent event) throws Exception {
@@ -83,19 +95,29 @@ public class JuniorChefController {
     }
 
     public void handleSaveRecipe(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("save_recipe.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Junior Chef - Save");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("save_recipe.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Junior Chef - Save");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (EmptyDataBaseException e) {
+            saveMessage.setText(e.getMessage());
+        }
     }
 
     public void handleRateRecipe(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("rate_recipe.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Junior Chef - Rate");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("rate_recipe.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Junior Chef - Rate");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (EmptyDataBaseException e) {
+            rateMessage.setText(e.getMessage());
+        }
     }
 
 }
