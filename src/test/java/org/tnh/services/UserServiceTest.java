@@ -11,17 +11,18 @@ import org.tnh.exceptions.UncompletedFieldsException;
 import org.tnh.exceptions.UsernameAlreadyExistsException;
 import org.tnh.model.User;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 class UserServiceTest {
 
-    private String FIRST_NAME = "Edward";
-    private String LAST_NAME = "Rosco";
-    private String EMAIL = "edward@yahoo.com";
-    private String USERNAME = "Edward26";
-    private String PASSWORD = "Edw@rd62";
-    private String CONFIRM_PASSWORD = "Edw@rd62";
-    private String ROLE = "Head Chef";
+    private final String FIRST_NAME = "Edward";
+    private final String LAST_NAME = "Rosco";
+    private final String EMAIL = "edward@yahoo.com";
+    private final String USERNAME = "Edward26";
+    private final String PASSWORD = "Edw@rd62";
+    private final String CONFIRM_PASSWORD = "Edw@rd62";
+    private final String ROLE = "Head Chef";
 
     @BeforeEach
     void setUp() throws Exception {
@@ -37,8 +38,7 @@ class UserServiceTest {
     }
 
     @Test
-    void testUserIsAddedToDatabase() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException,
-                                            PasswordNoUpperCaseException, UncompletedFieldsException
+    void testUserIsAddedToDatabase() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException
     {
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         assertThat(UserService.getAllUsers()).isNotEmpty();
@@ -51,6 +51,14 @@ class UserServiceTest {
         assertThat(user.getUsername()).isEqualTo(USERNAME);
         assertThat(user.getPassword()).isEqualTo(UserService.encodePassword(USERNAME, PASSWORD));
         assertThat(user.getRole()).isEqualTo(ROLE);
+    }
+
+    @Test
+    void testUserCanNotBeAddedTwice() {
+        assertThrows(UsernameAlreadyExistsException.class, () -> {
+            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+        });
     }
 
 }
