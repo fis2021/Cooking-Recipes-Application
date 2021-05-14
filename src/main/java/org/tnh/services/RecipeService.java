@@ -131,4 +131,29 @@ public class RecipeService {
         }
     }
 
+    public static void deleteRecipe(String recipe_name) {
+        for (Recipe recipe : recipeRepository.find()) {
+            if (recipe_name.equals(recipe.getName())) {
+                recipeRepository.remove(recipe);
+                break;
+            }
+        }
+    }
+
+    public static void modifyRecipe(String name, String calories, String time, String instructions, String username) {
+        for (Recipe recipe : recipeRepository.find()) {
+            if (name.equals(recipe.getName())
+                && username.equals(recipe.getUsername())) {
+                Recipe newRecipe = recipe.copyData();
+                newRecipe.setCalories(calories);
+                newRecipe.setTime(time);
+                newRecipe.setInstructions(instructions);
+                newRecipe.setRating("0");
+                recipeRepository.remove(recipe);
+                recipeRepository.insert(newRecipe);
+                break;
+            }
+        }
+    }
+
 }

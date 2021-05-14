@@ -6,7 +6,7 @@
 
 <GridPane fx:id="mainGrid" fx:controller="org.tnh.controllers.RateRecipeController"
           xmlns:fx="http://javafx.com/fxml"
-          stylesheets="styling/head.css"
+          stylesheets="styling/rate_recipe.css"
           vgap="10" hgap="220">
     <padding>
         <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>

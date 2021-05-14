@@ -131,6 +131,10 @@ public class Recipe {
         this.instructions = instructions;
     }
 
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
     public ArrayList<String> getAdmirers() {
         return admirers;
     }
