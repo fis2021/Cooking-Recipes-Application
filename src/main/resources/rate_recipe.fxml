@@ -17,13 +17,16 @@
         </padding>
         <Button fx:id ="back_button" onAction="#handleBackAction" text="Back" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     </GridPane>
-    <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
-        <GridPane alignment="CENTER" GridPane.rowIndex="10" GridPane.columnIndex="0">
+    <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10" alignment="CENTER">
+        <GridPane alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+            <padding>
+                <Insets bottom="25.0" left="180.0" right="25.0" top="250.0" />
+            </padding>
             <TextField fx:id="recipe" promptText="Recipe"
-                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                       GridPane.rowIndex="0" GridPane.columnIndex="0"/>
             <TextField fx:id="rating" promptText="Rating"
-                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-            <HBox spacing="10" GridPane.rowIndex="1" GridPane.columnIndex="2">
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="0">
                 <Button fx:id ="enter_button" onAction="#handleRate" text="Rate"/>
             </HBox>
         </GridPane>

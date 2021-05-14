@@ -1,46 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Text?>
-<GridPane fx:id="firstGrid" xmlns:fx="http://javafx.com/fxml"
-          alignment="center" vgap="10" hgap="10" prefHeight="400" prefWidth="600"
-          fx:controller="org.tnh.controllers.RecipeCreationController"
-          stylesheets="styling/create_recipe.css">
+<GridPane fx:id="firstGrid" alignment="center" hgap="10" prefHeight="400" prefWidth="600" stylesheets="styling/create_recipe.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnh.controllers.RecipeCreationController">
     <padding>
-        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
 
-    <GridPane id="secondGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+    <GridPane id="secondGrid" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <padding>
-            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
         </padding>
 
-        <Label id="subtitle-text" text="Create your recipe"
-               GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+        <Label id="subtitle-text" text="Create your recipe" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-        <TextField fx:id="name" promptText="Recipe name"
-                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="name" promptText="Recipe name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-        <TextField fx:id="calories" promptText="Calories"
-                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <TextField fx:id="calories" promptText="Calories" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <TextField fx:id="time" promptText="Time (minutes)"
-                   GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+        <TextField fx:id="time" promptText="Time (minutes)" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
 
-        <TextField fx:id="instructions" promptText="Instructions"
-                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <TextField fx:id="instructions" promptText="Instructions" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
 
         <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
-            <Button fx:id="register_button" onAction="#handleRegisterAction" text="Create"/>
-            <Button fx:id="back_button" onAction="#handleBackAction" text="Back"/>
+            <Button fx:id="register_button" onAction="#handleRegisterAction" text="Create" />
+            <Button fx:id="back_button" onAction="#handleBackAction" text="Back" />
         </HBox>
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
 
-    <GridPane id="thirdGrid" GridPane.rowIndex="2" GridPane.columnIndex="0" vgap="10" hgap="10" alignment="center">
-        <Text fx:id="recipeMessage" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <GridPane id="thirdGrid" alignment="center" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <Text fx:id="recipeMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>

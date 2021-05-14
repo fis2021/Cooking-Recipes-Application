@@ -7,8 +7,8 @@
 <?import javafx.scene.text.Text?>
 <GridPane fx:id="firstGrid" xmlns:fx="http://javafx.com/fxml"
           alignment="center" vgap="10" hgap="10" prefHeight="400" prefWidth="600"
-          fx:controller="org.tnh.controllers.ChangeRecipeController"
-          stylesheets="styling/create_recipe.css">
+          stylesheets="styling/change_recipe.css"
+          fx:controller="org.tnh.controllers.ChangeRecipeController">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
     </padding>
@@ -34,7 +34,7 @@
                    GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
 
         <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
-            <Button fx:id="modify_button" onAction="#handleModifyAction" text="Modify"/>
+            <Button fx:id="save_button" onAction="#handleSaveAction" text="Save"/>
             <Button fx:id="delete_button" onAction="#handleDeleteAction" text="Delete"/>
             <Button fx:id="back_button" onAction="#handleBackAction" text="Back"/>
         </HBox>

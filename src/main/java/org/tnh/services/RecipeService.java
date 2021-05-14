@@ -136,9 +136,9 @@ public class RecipeService {
         return recipes.size() == 0 ? null : recipes;
     }
 
-    public static void addRating(String recipe_name, String score, String admirer_name) {
+    public static void addRating(String recipe_name, String score, String admirer_name, String username) {
         for (Recipe recipe : recipeRepository.find()) {
-            if (recipe_name.equals(recipe.getName())) {
+            if (recipe_name.equals(recipe.getName()) && !(username.equals(recipe.getUsername()))) {
                 Recipe newRecipe = recipe.copyData();
                 newRecipe.addRating(admirer_name, Integer.parseInt(score));
                 recipeRepository.remove(recipe);
@@ -148,20 +148,21 @@ public class RecipeService {
         }
     }
 
-    public static void deleteRecipe(String recipe_name) {
+    public static void deleteRecipe(String searched_recipe) {
         for (Recipe recipe : recipeRepository.find()) {
-            if (recipe_name.equals(recipe.getName())) {
+            if (searched_recipe.equals(recipe.getName())) {
                 recipeRepository.remove(recipe);
                 break;
             }
         }
     }
 
-    public static void modifyRecipe(String name, String calories, String time, String instructions, String username) {
+    public static void modifyRecipe(String name, String calories, String time, String instructions, String searched_recipe) {
         for (Recipe recipe : recipeRepository.find()) {
-            if (name.equals(recipe.getName())
-                && username.equals(recipe.getUsername())) {
+            if(searched_recipe.equals(recipe.getName()))
+            {
                 Recipe newRecipe = recipe.copyData();
+                newRecipe.setName(name);
                 newRecipe.setCalories(calories);
                 newRecipe.setTime(time);
                 newRecipe.setInstructions(instructions);
@@ -171,6 +172,16 @@ public class RecipeService {
                 break;
             }
         }
+    }
+
+    public static boolean recipeFound(String name, String username)
+    {
+        for(Recipe recipe : recipeRepository.find())
+        {
+            if(name.equals(recipe.getName()) && username.equals(recipe.getUsername()))
+                return true;
+        }
+        return false;
     }
 
 }
