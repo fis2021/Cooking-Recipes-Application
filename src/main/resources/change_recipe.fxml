@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<GridPane fx:id="firstGrid" xmlns:fx="http://javafx.com/fxml"
+          alignment="center" vgap="10" hgap="10" prefHeight="400" prefWidth="600"
+          fx:controller="org.tnh.controllers.ChangeRecipeController"
+          stylesheets="styling/create_recipe.css">
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    </padding>
+
+    <GridPane id="secondGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        </padding>
+
+        <Label id="subtitle-text" text="Modify your recipe"
+               GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+        <TextField fx:id="name" promptText="Recipe name"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+        <TextField fx:id="calories" promptText="Calories"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <TextField fx:id="time" promptText="Time (minutes)"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+
+        <TextField fx:id="instructions" promptText="Instructions"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <Button fx:id="modify_button" onAction="#handleModifyAction" text="Modify"/>
+            <Button fx:id="delete_button" onAction="#handleDeleteAction" text="Delete"/>
+            <Button fx:id="back_button" onAction="#handleBackAction" text="Back"/>
+        </HBox>
+    </GridPane>
+
+    <GridPane id="thirdGrid" GridPane.rowIndex="2" GridPane.columnIndex="0" vgap="10" hgap="10" alignment="center">
+        <Text fx:id="recipeMessage" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    </GridPane>
+
+</GridPane>
