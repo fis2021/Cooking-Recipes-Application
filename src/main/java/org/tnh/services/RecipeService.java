@@ -81,6 +81,18 @@ public class RecipeService {
         if (!ok) throw new CouldNotFindRecipeException();
     }
 
+    public static void couldNotFindThisRecipe(String name) throws CouldNotFindRecipeException
+    {
+        boolean ok = false;
+        for (Recipe recipe : recipeRepository.find()) {
+            if (recipe.getName().contains(name)) {
+                ok = true;
+                break;
+            }
+        }
+        if (!ok) throw new CouldNotFindRecipeException();
+    }
+
     public static void emptyDataBase() throws EmptyDataBaseException
     {
         if (recipeRepository.size() == 0) throw new EmptyDataBaseException();
@@ -106,6 +118,21 @@ public class RecipeService {
             }
         }
         if (recipes.isEmpty()) throw new EmptyDataBaseException();
+    }
+
+    public static void emptyRatingFields(String name, String grade) throws UncompletedFieldsException
+    {
+        Pattern pattern = Pattern.compile("[\\S+]");
+        if (!pattern.matcher(name).find()
+                || !pattern.matcher(grade).find())
+            throw new UncompletedFieldsException();
+    }
+
+    public static void invalidGrade(String grade) throws InvalidGradeException
+    {
+        int integer = Integer.parseInt(grade);
+        if(integer < 1 || integer > 10)
+            throw new InvalidGradeException();
     }
 
     public static ArrayList<Recipe> populateData() {
@@ -136,7 +163,17 @@ public class RecipeService {
         return recipes.size() == 0 ? null : recipes;
     }
 
-    public static void addAdmirer(String recipe_name, String admirer_name) {
+    public static ArrayList<Recipe> populateSavedRecipesList(String username) {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        for (Recipe recipe : recipeRepository.find()) {
+            if (recipe.getAdmirers().contains(username)) {
+                recipes.add(recipe);
+            }
+        }
+        return recipes.size() == 0 ? null : recipes;
+    }
+
+    public static void addAdmirer(String recipe_name, String admirer_name) throws RecipeAlreadySavedException{
         for (Recipe recipe : recipeRepository.find()) {
             if (recipe_name.equals(recipe.getName())) {
                 Recipe newRecipe = recipe.copyData();
@@ -148,17 +185,7 @@ public class RecipeService {
         }
     }
 
-    public static ArrayList<Recipe> populateSavedRecipesList(String username) {
-        ArrayList<Recipe> recipes = new ArrayList<>();
-        for (Recipe recipe : recipeRepository.find()) {
-            if (recipe.getAdmirers().contains(username)) {
-                recipes.add(recipe);
-            }
-        }
-        return recipes.size() == 0 ? null : recipes;
-    }
-
-    public static void addRating(String recipe_name, String score, String admirer_name, String username) {
+    public static void addRating(String recipe_name, String score, String admirer_name, String username) throws RecipeAlreadyRatedException{
         for (Recipe recipe : recipeRepository.find()) {
             if (recipe_name.equals(recipe.getName()) && !(username.equals(recipe.getUsername()))) {
                 Recipe newRecipe = recipe.copyData();
@@ -184,11 +211,23 @@ public class RecipeService {
             if(searched_recipe.equals(recipe.getName()))
             {
                 Recipe newRecipe = recipe.copyData();
-                newRecipe.setName(name);
-                newRecipe.setCalories(calories);
-                newRecipe.setTime(time);
-                newRecipe.setInstructions(instructions);
-                newRecipe.setRating("0");
+                if(name.equals(""))
+                    newRecipe.setName(newRecipe.getName());
+                else
+                    newRecipe.setName(name);
+                if(calories.equals(""))
+                    newRecipe.setCalories(newRecipe.getCalories());
+                else
+                    newRecipe.setCalories(calories);
+                if(time.equals(""))
+                    newRecipe.setTime(newRecipe.getTime());
+                else
+                    newRecipe.setTime(time);
+                if(instructions.equals(""))
+                    newRecipe.setInstructions(newRecipe.getInstructions());
+                else
+                    newRecipe.setInstructions(instructions);
+                newRecipe.setRating("not yet rated");
                 recipeRepository.remove(recipe);
                 recipeRepository.insert(newRecipe);
                 break;

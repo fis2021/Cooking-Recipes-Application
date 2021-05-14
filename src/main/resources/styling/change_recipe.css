@@ -35,3 +35,8 @@
 {
     -fx-background-color: red;
 }
+
+#recipeMessage
+{
+    -fx-font-weight: bold;
+}
