@@ -7,7 +7,7 @@ import org.tnh.exceptions.*;
 import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 
-public class RecipeCreationController extends AbstractController {
+public class RecipeCreationController extends AbstractWindowViewController {
 
     @FXML
     private Text recipeMessage;

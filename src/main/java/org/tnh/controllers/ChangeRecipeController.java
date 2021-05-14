@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 
 import org.tnh.services.RecipeService;
 
-public class ChangeRecipeController extends AbstractController {
+public class ChangeRecipeController extends AbstractWindowViewController {
 
     @FXML
     private TextField name, calories, time, instructions;

@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 
-public class SaveRecipeController extends AbstractController {
+public class SaveRecipeController extends AbstractWindowViewController {
 
     @FXML
     private TextField search;
