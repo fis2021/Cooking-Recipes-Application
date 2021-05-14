@@ -2,6 +2,7 @@ package org.tnh.services;
 
 import org.apache.commons.io.FileUtils;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,6 +30,11 @@ class UserServiceTest {
         FileSystemService.APPLICATION_FOLDER = ".test-cooking-recipes";
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
+    }
+
+    @AfterEach
+    void tearDown() {
+        UserService.closeDatabase();
     }
 
     @Test

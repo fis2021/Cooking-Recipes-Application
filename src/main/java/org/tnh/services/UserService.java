@@ -17,14 +17,19 @@ import static org.tnh.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
         FileSystemService.initDirectory();
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("users.db").toFile())
                 .openOrCreate("test", "test");
 
         userRepository = database.getRepository(User.class);
+    }
+
+    public static void closeDatabase() {
+        database.close();
     }
 
     public static void addUser(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role) throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException {
@@ -71,6 +76,7 @@ public class UserService {
             throw new ConfirmPasswordAndPasswordNotEqualException("The 2 password fields are not the same!");
     }
 
+    @SuppressWarnings("all")
     public static User loggedUser(String username,String password) throws InvalidUsernameException, InvalidPasswordException {
         int ok1 = 0, ok2 = 0;
         for(User user : userRepository.find())
