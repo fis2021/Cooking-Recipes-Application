@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.tnh.exceptions.CouldNotFindRecipeException;
 import org.tnh.exceptions.EmptyDataBaseException;
 import org.tnh.exceptions.UncompletedFieldsException;
+import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 
 import java.io.IOException;
@@ -23,8 +24,6 @@ public class HeadChefController {
     private Stage stage;
     private Parent root;
 
-    @FXML
-    private Text createMessage;
     @FXML
     private Text ownedMessage;
     @FXML
@@ -58,16 +57,16 @@ public class HeadChefController {
     }
 
     public void handleShowOwnRecipesAction(ActionEvent event) throws Exception {
-        //try {
-            //RecipeService.emptyDataBase();
+        try {
+            RecipeService.emptyCreatedRecipesDataBase(LoggedUser.getLoggedUser().getUsername());
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Head Chef - List of owned recipes");
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
-        //} catch (EmptyDataBaseException e) {
-        //    showMessage.setText(e.getMessage());
-        //}
+        } catch (EmptyDataBaseException e) {
+            ownedMessage.setText(e.getMessage());
+        }
     }
 
     public void handleShowRecipesAction(ActionEvent event) throws Exception {
@@ -120,16 +119,16 @@ public class HeadChefController {
     }
 
     public void handleChangeRecipe(ActionEvent event) throws Exception {
-        //try {
-            //RecipeService.emptyDataBase();
+        try {
+            RecipeService.emptyCreatedRecipesDataBase(LoggedUser.getLoggedUser().getUsername());
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Head Chef - Search the recipe you want to change");
             stage.setScene(new Scene(root, 1280, 720));
             stage.show();
-        //} catch (EmptyDataBaseException e) {
-        //    rateMessage.setText(e.getMessage());
-        //}
+        } catch (EmptyDataBaseException e) {
+            modifyMessage.setText(e.getMessage());
+        }
     }
 
 }
