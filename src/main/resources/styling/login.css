@@ -17,12 +17,6 @@
     -fx-border-color: gray;
 }
 
-#loginMessage
-{
-    -fx-font-size: 16;
-    -fx-font-weight: bold;
-}
-
 #enter_button
 {
     -fx-pref-width: 60px;
@@ -47,3 +41,13 @@
 {
     -fx-background-color: blue;
 }
+
+#show_recipesGrid {
+    -fx-pref-width: 490px;
+    -fx-pref-height: 720px;
+}
+
+#secondGrid {
+    -fx-pref-height: 720px;
+}
+

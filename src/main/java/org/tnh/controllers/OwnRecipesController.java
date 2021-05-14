@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import org.tnh.model.LoggedUser;
 import org.tnh.model.Recipe;
@@ -46,5 +48,4 @@ public class OwnRecipesController {
         recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataCreatedRecipesList(LoggedUser.getLoggedUser().getUsername())));
         recipesTableView.setItems(recipes_obs);
     }
-
 }

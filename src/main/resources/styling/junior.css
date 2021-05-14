@@ -45,4 +45,5 @@
 #logout_button
 {
     -fx-background-color: red;
+    -fx-alignment: CENTER;
 }

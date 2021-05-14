@@ -19,7 +19,7 @@
 
     </GridPane>
 
-    <GridPane fx:id="secondGrid" hgap="10" vgap="15" GridPane.rowIndex="10" GridPane.columnIndex="1">
+    <GridPane fx:id="secondGrid" alignment="CENTER" hgap="10" vgap="15" GridPane.rowIndex="0" GridPane.columnIndex="1">
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
         </padding>
@@ -43,7 +43,7 @@
         <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
             <Button fx:id ="register_button" onAction="#handleCreateAccountAction" text="Register"/>
         </HBox>
-        <Text fx:id="loginMessage" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+        <Text fx:id="loginMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
     </GridPane>
 </GridPane>
 

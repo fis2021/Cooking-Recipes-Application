@@ -6,6 +6,8 @@
 #subtitle-text
 {
     -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13;
 }
 
 #role_label
