@@ -17,6 +17,8 @@
             <Button fx:id ="recipes_button" onAction="#handleShowRecipes" text="Show Recipes"/>
         </HBox>
 
+        <Text fx:id="showMessage" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
     </GridPane>
 
     <GridPane fx:id="secondGrid" alignment="CENTER" hgap="10" vgap="15" GridPane.rowIndex="0" GridPane.columnIndex="1">
@@ -30,6 +32,8 @@
         <HBox spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="0">
             <Button fx:id ="enter_button" onAction="#handleSearch" text="Enter"/>
         </HBox>
+
+        <Text fx:id="searchMessage" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
         <TextField fx:id="username" promptText="Username"
                    GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>

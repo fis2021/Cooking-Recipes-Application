@@ -69,6 +69,23 @@ public class RecipeService {
         if (!pattern.matcher(name).find()) throw new UncompletedFieldsException();
     }
 
+    public static void couldNotFindRecipe(String name) throws CouldNotFindRecipeException
+    {
+        boolean ok = false;
+        for (Recipe recipe : recipeRepository.find()) {
+            if (recipe.getName().contains(name)) {
+                ok = true;
+                break;
+            }
+        }
+        if (!ok) throw new CouldNotFindRecipeException();
+    }
+
+    public static void emptyDataBase() throws EmptyDataBaseException
+    {
+        if (recipeRepository.size() == 0) throw new EmptyDataBaseException();
+    }
+
     public static ArrayList<Recipe> populateData() {
         ArrayList<Recipe> recipes = new ArrayList<>();
         for (Recipe recipe : recipeRepository.find()) {

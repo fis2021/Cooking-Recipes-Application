@@ -10,9 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.tnh.exceptions.InvalidPasswordException;
-import org.tnh.exceptions.InvalidUsernameException;
-import org.tnh.exceptions.UncompletedFieldsException;
+import org.tnh.exceptions.*;
 import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
@@ -23,6 +21,10 @@ public class LoginController {
     private Stage stage;
     private Parent root;
 
+    @FXML
+    private Text showMessage;
+    @FXML
+    private Text searchMessage;
     @FXML
     private Text loginMessage;
     @FXML
@@ -72,21 +74,31 @@ public class LoginController {
     }
 
     public void handleShowRecipes(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("List of recipes");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.emptyDataBase();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("list_recipes.fxml")));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setTitle("List of recipes");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (EmptyDataBaseException e) {
+            showMessage.setText(e.getMessage());
+        }
     }
 
     public void handleSearch(ActionEvent event) throws Exception {
-        RecipeService.uncompletedNameField(search.getText());
-        setSearchValue();
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setTitle("Search");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
+        try {
+            RecipeService.uncompletedNameField(search.getText());
+            RecipeService.couldNotFindRecipe(search.getText());
+            setSearchValue();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setTitle("Search");
+            stage.setScene(new Scene(root, 1280, 720));
+            stage.show();
+        } catch (UncompletedFieldsException | CouldNotFindRecipeException e) {
+            searchMessage.setText(e.getMessage());
+        }
     }
 
 }
