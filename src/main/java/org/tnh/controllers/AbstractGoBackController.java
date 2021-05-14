@@ -21,7 +21,7 @@ public abstract class AbstractGoBackController {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
             stage.setTitle("Junior Chef");
         } else {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("startup_page.fxml")));
             stage.setTitle("Cooking-Recipes-Application");
         }
         stage.setScene(new Scene(root, 1280, 720));

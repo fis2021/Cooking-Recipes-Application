@@ -21,7 +21,7 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         RecipeService.initDatabase();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
         primaryStage.setTitle("Cooking-Recipes-Application");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setResizable(false);

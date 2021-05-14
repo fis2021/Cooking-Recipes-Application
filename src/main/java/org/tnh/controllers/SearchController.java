@@ -30,7 +30,7 @@ public class SearchController extends AbstractGoBackController {
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("instructions"));
         recipeRating.setCellValueFactory(new PropertyValueFactory<>("rating"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
-        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(LoginController.getSearchValue())));
+        recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(StartUpPageController.getSearchValue())));
         recipesTableView.setItems(recipes_obs);
     }
 

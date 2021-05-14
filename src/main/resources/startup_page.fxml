@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="imageGrid" stylesheets="styling/login.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnh.controllers.LoginController">
+<GridPane fx:id="imageGrid" stylesheets="styling/startup_page.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnh.controllers.StartUpPageController">
 
     <GridPane fx:id="show_recipesGrid" hgap="10" vgap="15" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <padding>
@@ -15,7 +15,10 @@
             <Button fx:id="recipes_button" onAction="#handleShowRecipes" text="Show Recipes" />
         </HBox>
 
-        <Text fx:id="showMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Text fx:id="showMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
       <columnConstraints>
          <ColumnConstraints />
       </columnConstraints>
@@ -39,7 +42,10 @@
             <Button fx:id="enter_button" onAction="#handleSearch" text="Enter" />
         </HBox>
 
-        <Text fx:id="searchMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Text fx:id="searchMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
 
         <TextField fx:id="username" promptText="Username" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
 
@@ -49,7 +55,10 @@
             <Button fx:id="login_button" onAction="#handleLoginAction" text="Log in" />
         </HBox>
 
-        <Text fx:id="loginMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Text fx:id="loginMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
       <columnConstraints>
          <ColumnConstraints />
          <ColumnConstraints />
