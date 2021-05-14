@@ -86,6 +86,28 @@ public class RecipeService {
         if (recipeRepository.size() == 0) throw new EmptyDataBaseException();
     }
 
+    public static void emptySavedDataBase(String username) throws EmptyDataBaseException
+    {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        for (Recipe recipe : recipeRepository.find()) {
+            if (recipe.getAdmirers().contains(username)) {
+                recipes.add(recipe);
+            }
+        }
+        if (recipes.isEmpty()) throw new EmptyDataBaseException();
+    }
+
+    public static void emptyCreatedRecipesDataBase(String username) throws EmptyDataBaseException
+    {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        for (Recipe recipe : recipeRepository.find()) {
+            if (username.equals(recipe.getUsername())) {
+                recipes.add(recipe);
+            }
+        }
+        if (recipes.isEmpty()) throw new EmptyDataBaseException();
+    }
+
     public static ArrayList<Recipe> populateData() {
         ArrayList<Recipe> recipes = new ArrayList<>();
         for (Recipe recipe : recipeRepository.find()) {

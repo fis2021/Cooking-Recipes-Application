@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 
-public class RateRecipeController extends AbstractGoBackController {
+public class RateRecipeController extends AbstractController {
 
     @FXML
     private TextField recipe, rating;

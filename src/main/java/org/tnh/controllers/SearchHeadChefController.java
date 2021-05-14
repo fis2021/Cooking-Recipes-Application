@@ -5,14 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import org.tnh.model.Recipe;
 import org.tnh.services.RecipeService;
 
 import java.util.Objects;
 
-public class SearchHeadChefController extends AbstractGoBackController {
+public class SearchHeadChefController extends AbstractController {
 
     @FXML
     private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating;
@@ -24,11 +23,7 @@ public class SearchHeadChefController extends AbstractGoBackController {
     }
 
     public void setTable() {
-        recipeName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        recipeCalories.setCellValueFactory(new PropertyValueFactory<>("calories"));
-        recipeTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("instructions"));
-        recipeRating.setCellValueFactory(new PropertyValueFactory<>("rating"));
+        initVars(recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating);
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
         recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(HeadChefController.getSearchValue())));
         recipesTableView.setItems(recipes_obs);

@@ -1,34 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
 
-<GridPane fx:id="mainGrid" fx:controller="org.tnh.controllers.JuniorChefController"
-          xmlns:fx="http://javafx.com/fxml"
-          stylesheets="styling/junior.css"
-          vgap="10" hgap="220">
+<GridPane fx:id="mainGrid" hgap="220" stylesheets="styling/junior.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnh.controllers.JuniorChefController">
     <padding>
-        <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
-    <GridPane id="buttonsGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+    <GridPane id="buttonsGrid" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <padding>
-            <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
         </padding>
-        <Button fx:id ="saved_recipes_button" onAction="#handleSavedRecipes" text="Saved recipes" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <Button fx:id ="recipes_button" onAction="#handleShowRecipes" text="Show recipes" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <Button fx:id ="save_recipe_button" onAction="#handleSaveRecipe" text="Save recipe" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <Button fx:id ="rate_recipe_button" onAction="#handleRateRecipe" text="Rate recipe" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <Button fx:id ="logout_button" onAction="#handleLogout" text="Logout" alignment="BOTTOM_LEFT" GridPane.rowIndex="45" GridPane.columnIndex="0"/>
+
+        <Button fx:id="saved_recipes_button" onAction="#handleSavedRecipes" text="Saved recipes" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Text fx:id="savedMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+
+        <Button fx:id="recipes_button" onAction="#handleShowRecipes" text="Show recipes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Text fx:id="showMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+
+        <Button fx:id="save_recipe_button" onAction="#handleSaveRecipe" text="Save recipe" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Text fx:id="saveMessage" GridPane.columnIndex="0" GridPane.rowIndex="5">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+
+        <Button fx:id="rate_recipe_button" onAction="#handleRateRecipe" text="Rate recipe" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Text fx:id="rateMessage" GridPane.columnIndex="0" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+
+        <Button fx:id="logout_button" alignment="BOTTOM_LEFT" onAction="#handleLogout" text="Logout" GridPane.columnIndex="0" GridPane.rowIndex="40" />
+
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
-    <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
-        <GridPane alignment="CENTER" GridPane.rowIndex="10" GridPane.columnIndex="0">
-            <Label id="title" text="Junior Chef" alignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="search" promptText="Search"
-                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <GridPane id="searchGrid" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
+        <GridPane alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="10">
+            <Label id="title" alignment="CENTER" text="Junior Chef" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="search" promptText="Search" GridPane.columnIndex="0" GridPane.rowIndex="1" />
             <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <Button fx:id ="enter_button" onAction="#handleSearch" text="Enter"/>
+                <Button fx:id="enter_button" onAction="#handleSearch" text="Enter" />
             </HBox>
+
+            <Text fx:id="searchMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+               <Font size="14.0" />
+            </font></Text>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+
         </GridPane>
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

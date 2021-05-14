@@ -14,7 +14,7 @@ import org.tnh.services.RecipeService;
 
 import java.util.Objects;
 
-public class SearchRecipeToChangeController extends AbstractGoBackController {
+public class SearchRecipeToChangeController extends AbstractController {
 
     @FXML
     private TextField search_recipe;

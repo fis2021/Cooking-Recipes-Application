@@ -16,7 +16,7 @@ import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 import java.util.Objects;
 
-public class LoginController {
+public class StartUpPageController {
 
     private Stage stage;
     private Parent root;
