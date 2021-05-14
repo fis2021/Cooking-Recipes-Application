@@ -69,4 +69,12 @@ public class JuniorChefController {
         }
     }
 
+    public void handleSaveRecipe(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("save_recipe.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Junior Chef - Save");
+        stage.setScene(new Scene(root, 1280, 720));
+        stage.show();
+    }
+
 }
