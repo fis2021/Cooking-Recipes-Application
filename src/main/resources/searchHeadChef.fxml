@@ -6,24 +6,35 @@
 
 <GridPane fx:id="mainGrid"
           fx:controller="org.tnh.controllers.SearchHeadChefController"
+          stylesheets="styling/list_recipes.css"
           xmlns:fx="http://javafx.com/fxml"
           vgap="10" hgap="220">
 
-
-    <GridPane id="buttonsGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+    <GridPane fx:id="buttonGrid" hgap="10" vgap="15" GridPane.rowIndex="0" GridPane.columnIndex="0">
         <padding>
-            <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+            <Insets bottom="25.0" left="25.0" right="0" top="25.0"/>
         </padding>
-        <Button fx:id ="back_button" onAction="#handleBackAction" text="Back" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TableView fx:id="recipesTableView" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Button fx:id ="back_button" onAction="#handleBackAction" text="Back" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        </HBox>
+
+    </GridPane>
+
+    <GridPane id="listGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
+        <padding>
+            <Insets top="25.0" bottom="25.0" left="0" right="25.0"/>
+        </padding>
+        <TableView fx:id="recipesTableView" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2">
             <columns>
-                <TableColumn fx:id="recipeName" text="NAME" prefWidth="145"
+                <TableColumn fx:id="recipeName" text="NAME" prefWidth="100"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="recipeCalories" text="CALORIES" prefWidth="145"
+                <TableColumn fx:id="recipeCalories" text="CALORIES" prefWidth="100"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="recipeTime" text="TIME" prefWidth="145"
+                <TableColumn fx:id="recipeTime" text="TIME" prefWidth="100"
                              resizable="false" sortable="false"/>
-                <TableColumn fx:id="recipeInstructions" text="INSTRUCTIONS" prefWidth="145"
+                <TableColumn fx:id="recipeInstructions" text="INSTRUCTIONS" prefWidth="200"
+                             resizable="false" sortable="false"/>
+                <TableColumn fx:id="recipeRating" text="RATING" prefWidth="100"
                              resizable="false" sortable="false"/>
             </columns>
         </TableView>

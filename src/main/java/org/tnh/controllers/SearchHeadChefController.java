@@ -15,7 +15,7 @@ import java.util.Objects;
 public class SearchHeadChefController extends AbstractGoBackController {
 
     @FXML
-    private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions;
+    private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating;
     @FXML
     private TableView<Recipe> recipesTableView;
 
@@ -24,10 +24,11 @@ public class SearchHeadChefController extends AbstractGoBackController {
     }
 
     public void setTable() {
-        recipeName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        recipeCalories.setCellValueFactory(new PropertyValueFactory<>("Calories"));
-        recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
-        recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
+        recipeName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        recipeCalories.setCellValueFactory(new PropertyValueFactory<>("calories"));
+        recipeTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("instructions"));
+        recipeRating.setCellValueFactory(new PropertyValueFactory<>("rating"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
         recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(HeadChefController.getSearchValue())));
         recipesTableView.setItems(recipes_obs);

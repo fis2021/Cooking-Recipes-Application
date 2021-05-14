@@ -91,12 +91,24 @@ public class Recipe {
         }
     }
 
+    public String getRating() {
+        return rating;
+    }
+
     public UUID getRecipe_id() {
         return recipe_id;
     }
 
+    public void setRecipe_id(UUID recipe_id) {
+        this.recipe_id = recipe_id;
+    }
+
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -135,8 +147,27 @@ public class Recipe {
         this.rating = rating;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public ArrayList<String> getRaters() {
+        return raters;
+    }
+
+    public void setRaters(ArrayList<String> raters) {
+        this.raters = raters;
+    }
+
     public ArrayList<String> getAdmirers() {
         return admirers;
     }
 
+    public void setAdmirers(ArrayList<String> admirers) {
+        this.admirers = admirers;
+    }
 }
