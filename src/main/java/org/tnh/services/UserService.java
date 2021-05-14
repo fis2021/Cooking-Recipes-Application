@@ -8,6 +8,7 @@ import org.tnh.model.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -18,6 +19,7 @@ public class UserService {
     private static ObjectRepository<User> userRepository;
 
     public static void initDatabase() {
+        FileSystemService.initDirectory();
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("users.db").toFile())
                 .openOrCreate("test", "test");
@@ -31,6 +33,10 @@ public class UserService {
         passwordNoUpperCase(password);
         passwordNotEqualConfirmPassword(password, confirmPassword);
         userRepository.insert(new User(firstName, lastName, email, username, encodePassword(username, password), role));
+    }
+
+    public static List<User> getAllUsers() {
+        return userRepository.find().toList();
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -100,7 +106,7 @@ public class UserService {
         return role.toString();
     }
 
-    private static String encodePassword(String salt, String password) {
+    public static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));
 
