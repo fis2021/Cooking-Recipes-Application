@@ -64,18 +64,21 @@ public class HeadChefController {
     }
 
     public void handleSearch(ActionEvent event) throws Exception {
-        try {
-            RecipeService.uncompletedNameField(search.getText());
-            setSearchValue();
-
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchHeadChef.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Head Chef - Search");
-            stage.setScene(new Scene(root, 1280, 720));
-            stage.show();
-        } catch(UncompletedFieldsException e) {
-
-
-        }
+        RecipeService.uncompletedNameField(search.getText());
+        setSearchValue();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchHeadChef.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Head Chef - Search");
+        stage.setScene(new Scene(root, 1280, 720));
+        stage.show();
     }
+
+    public void handleRateRecipe(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("rate_recipe.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Head Chef - Rate");
+        stage.setScene(new Scene(root, 1280, 720));
+        stage.show();
+    }
+
 }

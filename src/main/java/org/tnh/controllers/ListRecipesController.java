@@ -14,7 +14,7 @@ import java.util.Objects;
 public class ListRecipesController extends AbstractGoBackController {
 
     @FXML
-    private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions;
+    private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating;
     @FXML
     private TableView<Recipe> recipesTableView;
 
@@ -27,6 +27,7 @@ public class ListRecipesController extends AbstractGoBackController {
         recipeCalories.setCellValueFactory(new PropertyValueFactory<>("Calories"));
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
         recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
+        recipeRating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
         recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateData()));
         recipesTableView.setItems(recipes_obs);

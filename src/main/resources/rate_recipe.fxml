@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane fx:id="mainGrid" fx:controller="org.tnh.controllers.RateRecipeController"
+          xmlns:fx="http://javafx.com/fxml"
+          stylesheets="styling/head.css"
+          vgap="10" hgap="220">
+    <padding>
+        <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+    </padding>
+    <GridPane id="buttonsGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+        <padding>
+            <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
+        </padding>
+        <Button fx:id ="back_button" onAction="#handleBackAction" text="Back" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    </GridPane>
+    <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
+        <GridPane alignment="CENTER" GridPane.rowIndex="10" GridPane.columnIndex="0">
+            <TextField fx:id="recipe" promptText="Recipe"
+                       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="rating" promptText="Rating"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <HBox spacing="10" GridPane.rowIndex="1" GridPane.columnIndex="2">
+                <Button fx:id ="enter_button" onAction="#handleRate" text="Rate"/>
+            </HBox>
+        </GridPane>
+    </GridPane>
+</GridPane>

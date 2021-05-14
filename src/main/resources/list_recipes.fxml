@@ -34,6 +34,8 @@
                              resizable="false" sortable="false"/>
                 <TableColumn fx:id="recipeInstructions" text="INSTRUCTIONS" prefWidth="145"
                              resizable="false" sortable="false"/>
+                <TableColumn fx:id="recipeRating" text="RATING" prefWidth="145"
+                             resizable="false" sortable="false"/>
             </columns>
         </TableView>
     </GridPane>

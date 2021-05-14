@@ -13,6 +13,10 @@ public class Recipe {
     private String calories;
     private String time;
     private String instructions;
+    private String rating = "0";
+    private int total_rating = 0;
+    @SuppressWarnings("FieldMayBeFinal")
+    private ArrayList<String> raters = new ArrayList<>();
     @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<String> admirers = new ArrayList<>();
 
@@ -47,6 +51,29 @@ public class Recipe {
     public UUID rand_UUID() {
         this.recipe_id = UUID.randomUUID();
         return this.recipe_id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+        if (!(o instanceof Recipe)) {
+            return false;
+        }
+        Recipe r = (Recipe) o;
+
+        return name.equals(r.name);
+    }
+
+    public void addRating(String rater, int score) {
+        if (raters.contains(rater)) {
+            System.out.println("You already rated this recipe!");
+        } else {
+            raters.add(rater);
+            total_rating += score;
+            rating = String.valueOf((float)total_rating / raters.size());
+        }
     }
 
     public UUID getRecipe_id() {
@@ -97,16 +124,7 @@ public class Recipe {
         admirers.add(name);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (!(o instanceof Recipe)) {
-            return false;
-        }
-        Recipe r = (Recipe) o;
-
-        return name.equals(r.name);
+    public String getRating() {
+        return rating;
     }
 }

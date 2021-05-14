@@ -119,4 +119,16 @@ public class RecipeService {
         return recipes.size() == 0 ? null : recipes;
     }
 
+    public static void addRating(String recipe_name, String score, String admirer_name) {
+        for (Recipe recipe : recipeRepository.find()) {
+            if (recipe_name.equals(recipe.getName())) {
+                Recipe newRecipe = recipe.copyData();
+                newRecipe.addRating(admirer_name, Integer.parseInt(score));
+                recipeRepository.remove(recipe);
+                recipeRepository.insert(newRecipe);
+                break;
+            }
+        }
+    }
+
 }
