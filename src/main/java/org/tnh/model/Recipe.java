@@ -14,7 +14,7 @@ public class Recipe {
     private String time;
     private String instructions;
     private String rating = "0";
-    private int total_rating = 0;
+    private int score = 0;
     @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<String> raters = new ArrayList<>();
     @SuppressWarnings("FieldMayBeFinal")
@@ -39,7 +39,7 @@ public class Recipe {
         this.time = time;
         this.instructions = instructions;
         this.rating = rating;
-        this.total_rating = total_rating;
+        this.score = total_rating;
         this.raters = raters;
         this.admirers = admirers;
     }
@@ -47,7 +47,7 @@ public class Recipe {
     public Recipe() { }
 
     public Recipe copyData() {
-        return new Recipe(recipe_id, username, name, calories, time, instructions, rating, total_rating, raters, admirers);
+        return new Recipe(recipe_id, username, name, calories, time, instructions, rating, score, raters, admirers);
     }
 
     public String toString() {
@@ -85,8 +85,9 @@ public class Recipe {
             System.out.println("You already rated this recipe!");
         } else {
             raters.add(rater);
-            total_rating += score;
-            rating = String.valueOf((float)total_rating / raters.size());
+            this.score += score;
+            rating = String.valueOf((float) this.score / raters.size());
+            System.out.println(rating);
         }
     }
 

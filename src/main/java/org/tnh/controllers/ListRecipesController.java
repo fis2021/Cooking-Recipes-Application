@@ -23,11 +23,11 @@ public class ListRecipesController extends AbstractGoBackController {
     }
 
     public void setTable() {
-        recipeName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        recipeCalories.setCellValueFactory(new PropertyValueFactory<>("Calories"));
-        recipeTime.setCellValueFactory(new PropertyValueFactory<>("Time"));
-        recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("Instructions"));
-        recipeRating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
+        recipeName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        recipeCalories.setCellValueFactory(new PropertyValueFactory<>("calories"));
+        recipeTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        recipeInstructions.setCellValueFactory(new PropertyValueFactory<>("instructions"));
+        recipeRating.setCellValueFactory(new PropertyValueFactory<>("rating"));
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
         recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateData()));
         recipesTableView.setItems(recipes_obs);
