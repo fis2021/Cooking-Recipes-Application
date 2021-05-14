@@ -1,20 +1,13 @@
 package org.tnh.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import org.tnh.exceptions.*;
 import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
-import java.util.Objects;
 
-public class RecipeCreationController {
+public class RecipeCreationController extends AbstractGoBackController {
 
     @FXML
     private Text recipeMessage;
@@ -37,11 +30,4 @@ public class RecipeCreationController {
         }
     }
 
-    public void handleBackAction(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Head Chef");
-        stage.setScene(new Scene(root, 1280, 720));
-        stage.show();
-    }
 }

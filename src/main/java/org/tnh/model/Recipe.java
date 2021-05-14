@@ -13,6 +13,7 @@ public class Recipe {
     private String calories;
     private String time;
     private String instructions;
+    @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<String> admirers = new ArrayList<>();
 
     public Recipe(String username, String name, String calories, String time, String instructions) {

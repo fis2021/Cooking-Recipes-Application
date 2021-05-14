@@ -34,7 +34,7 @@ public class HeadChefController {
     public void handleCreateRecipeAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("create_recipe.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Create recipe");
+        stage.setTitle("Head Chef - Create recipe");
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }
@@ -42,7 +42,7 @@ public class HeadChefController {
     public void handleShowOwnRecipesAction(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("List of own recipes");
+        stage.setTitle("Head Chef - List of owned recipes");
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }

@@ -2,6 +2,7 @@ package org.tnh.model;
 
 import org.dizitart.no2.objects.Id;
 
+@SuppressWarnings("unused")
 public class User {
     @Id
     private String firstName;
@@ -9,16 +10,14 @@ public class User {
     private String email;
     private String username;
     private String password;
-    private String confirmPassword;
     private String role;
 
-    public User(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role) {
+    public User(String firstName, String lastName, String email, String username, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.confirmPassword = confirmPassword;
         this.role = role;
     }
 

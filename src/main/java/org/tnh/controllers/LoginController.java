@@ -80,20 +80,13 @@ public class LoginController {
     }
 
     public void handleSearch(ActionEvent event) throws Exception {
-        try {
-            RecipeService.uncompletedNameField(search.getText());
-            setSearchValue();
-
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("Search");
-            stage.setScene(new Scene(root, 1280, 720));
-            stage.show();
-        } catch(UncompletedFieldsException e) {
-
-
-
-        }
+        RecipeService.uncompletedNameField(search.getText());
+        setSearchValue();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("Search");
+        stage.setScene(new Scene(root, 1280, 720));
+        stage.show();
     }
 
 }

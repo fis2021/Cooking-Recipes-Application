@@ -7,7 +7,6 @@ import org.tnh.exceptions.*;
 import org.tnh.model.Recipe;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.tnh.services.FileSystemService.getPathToFile;
@@ -57,26 +56,17 @@ public class RecipeService {
     public static void uncompletedFields(String name, String calories, String time,  String instructions) throws UncompletedFieldsException
     {
         Pattern pattern = Pattern.compile("[\\S+]");
-        Matcher matcher1 = pattern.matcher(name);
-        Matcher matcher2 = pattern.matcher(calories);
-        Matcher matcher3 = pattern.matcher(time);
-        Matcher matcher4 = pattern.matcher(instructions);
-        boolean matchFound1 = matcher1.find();
-        boolean matchFound2 = matcher2.find();
-        boolean matchFound3 = matcher3.find();
-        boolean matchFound4 = matcher4.find();
-        if(!matchFound1) throw new UncompletedFieldsException();
-        if(!matchFound2) throw new UncompletedFieldsException();
-        if(!matchFound3) throw new UncompletedFieldsException();
-        if(!matchFound4) throw new UncompletedFieldsException();
+        if (!pattern.matcher(name).find()
+            || !pattern.matcher(calories).find()
+            || !pattern.matcher(time).find()
+            || !pattern.matcher(instructions).find())
+                throw new UncompletedFieldsException();
     }
 
     public static void uncompletedNameField(String name) throws UncompletedFieldsException
     {
         Pattern pattern = Pattern.compile("[\\S+]");
-        Matcher matcher1 = pattern.matcher(name);
-        boolean matchFound1 = matcher1.find();
-        if(!matchFound1) throw new UncompletedFieldsException();
+        if (!pattern.matcher(name).find()) throw new UncompletedFieldsException();
     }
 
     public static ArrayList<Recipe> populateData() {

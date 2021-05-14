@@ -12,7 +12,7 @@ import org.tnh.services.RecipeService;
 
 import java.util.Objects;
 
-public class SearchJuniorChefController extends AbstractListRecipesController {
+public class SearchJuniorChefController extends AbstractGoBackController {
 
     @FXML
     private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions;

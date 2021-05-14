@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public abstract class AbstractListRecipesController {
+public abstract class AbstractGoBackController {
 
     public void handleBackAction(ActionEvent event) throws Exception {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
