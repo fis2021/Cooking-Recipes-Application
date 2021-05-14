@@ -3,6 +3,15 @@
     -fx-background-image: url("images/logo.png");
 }
 
+#welcomeMessage
+{
+    -fx-text-fill: white;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 100px;
+    -fx-font-weight: BOLD;
+    -fx-font-size: 50;
+}
+
 .button
 {
     -fx-pref-width: 117px;
@@ -21,7 +30,7 @@
 {
     -fx-pref-width: 60px;
     -fx-pref-height: 5px;
-    -fx-font-size: 13;
+    -fx-font-size: 12;
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-background-color: gray;
@@ -43,11 +52,32 @@
 }
 
 #show_recipesGrid {
-    -fx-pref-width: 490px;
+    -fx-pref-width: 400px;
     -fx-pref-height: 720px;
 }
 
 #secondGrid {
     -fx-pref-height: 720px;
+    -fx-pref-width: 600px;
 }
 
+#thirdGrid
+{
+    -fx-pref-width: 350px;
+    -fx-pref-height: 720px;
+}
+
+#loginMessage
+{
+    -fx-font-weight: bold;
+}
+
+#searchMessage
+{
+    -fx-font-weight: bold;
+}
+
+#showMessage
+{
+    -fx-font-weight: bold;
+}

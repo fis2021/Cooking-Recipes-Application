@@ -1,6 +1,6 @@
 #mainGrid
 {
-    -fx-background-image: url("images/rate.jpg");
+    -fx-background-image: url("images/save_recipe.jpg");
 }
 
 .button
@@ -22,7 +22,7 @@
 {
     -fx-pref-width: 60px;
     -fx-pref-height: 5px;
-    -fx-font-size: 13;
+    -fx-font-size: 12;
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-background-color: gray;

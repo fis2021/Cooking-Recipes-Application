@@ -87,7 +87,6 @@ public class Recipe {
             raters.add(rater);
             this.score += score;
             rating = String.valueOf((float) this.score / raters.size());
-            System.out.println(rating);
         }
     }
 

@@ -12,7 +12,7 @@ public class RateRecipeController extends AbstractGoBackController {
     private TextField recipe, rating;
 
     public void handleRate() {
-        RecipeService.addRating(recipe.getText(), rating.getText(), LoggedUser.getLoggedUser().getUsername());
+        RecipeService.addRating(recipe.getText(), rating.getText(), LoggedUser.getLoggedUser().getUsername(), LoggedUser.getLoggedUser().getUsername());
     }
 
 }

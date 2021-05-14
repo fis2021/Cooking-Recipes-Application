@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
-<GridPane fx:id="firstGrid" xmlns:fx="http://javafx.com/fxml"
-          alignment="center" vgap="10" hgap="10" prefHeight="400" prefWidth="600"
-          fx:controller="org.tnh.controllers.RegistrationController"
-          stylesheets="styling/register.css">
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="firstGrid" alignment="center" hgap="10" prefHeight="400" prefWidth="600" stylesheets="styling/register.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnh.controllers.RegistrationController">
     <padding>
-        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
 
-    <GridPane id="secondGrid" GridPane.rowIndex="0" GridPane.columnIndex="0" vgap="10" hgap="10">
+    <GridPane id="secondGrid" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <padding>
-            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
         </padding>
 
-        <Label id="subtitle-text" text="Create your account. It's free and only takes a minute"
-               GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+        <Label id="subtitle-text" text="Create your account. It's free and only takes a minute" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-        <TextField fx:id="firstName" promptText="First Name"
-                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="firstName" promptText="First Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-        <TextField fx:id="lastName" promptText="Last Name"
-                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <TextField fx:id="lastName" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-        <TextField fx:id="email" promptText="Email"
-                   GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+        <TextField fx:id="email" promptText="Email" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
 
-        <TextField fx:id="username" promptText="Username"
-                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <TextField fx:id="username" promptText="Username" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
 
-        <PasswordField fx:id="password" promptText="Password"
-                       GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="0" GridPane.rowIndex="4" />
 
-        <PasswordField fx:id="confirmPassword" promptText="Confirm Password"
-                       GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <PasswordField fx:id="confirmPassword" promptText="Confirm Password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
 
-    <GridPane id="thirdGrid" GridPane.rowIndex="1" GridPane.columnIndex="0" vgap="10" hgap="10">
-        <Label id="role_label" text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    <GridPane id="thirdGrid" alignment="CENTER" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Label id="role_label" prefHeight="18.0" prefWidth="26.0" text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <Text fx:id="registrationMessage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-            <Button fx:id="register_button" onAction="#handleRegisterAction" text="Register"/>
-            <Button fx:id="back_button" onAction="#handleBackFirstPageAction" text="Back"/>
+        <Text fx:id="registrationMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+        <HBox prefWidth="301.0" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button fx:id="register_button" onAction="#handleRegisterAction" prefHeight="26.0" prefWidth="66.0" text="Register" />
+            <Button fx:id="back_button" onAction="#handleBackFirstPageAction" prefHeight="26.0" prefWidth="66.0" text="Back" />
         </HBox>
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>

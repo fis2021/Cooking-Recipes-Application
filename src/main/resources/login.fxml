@@ -1,53 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Text?>
-<GridPane fx:id="imageGrid" fx:controller="org.tnh.controllers.LoginController"
-          xmlns:fx="http://javafx.com/fxml" stylesheets="styling/login.css"
-          vgap="10">
+<GridPane fx:id="imageGrid" stylesheets="styling/login.css" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tnh.controllers.LoginController">
 
-    <GridPane fx:id="show_recipesGrid" hgap="10" vgap="15" GridPane.rowIndex="0" GridPane.columnIndex="0">
+    <GridPane fx:id="show_recipesGrid" hgap="10" vgap="15" GridPane.columnIndex="0" GridPane.rowIndex="0">
         <padding>
-            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
         </padding>
         <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
-            <Button fx:id ="recipes_button" onAction="#handleShowRecipes" text="Show Recipes"/>
+            <Button fx:id="recipes_button" onAction="#handleShowRecipes" text="Show Recipes" />
         </HBox>
 
-        <Text fx:id="showMessage" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Text fx:id="showMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
 
     </GridPane>
 
-    <GridPane fx:id="secondGrid" alignment="CENTER" hgap="10" vgap="15" GridPane.rowIndex="0" GridPane.columnIndex="1">
+    <GridPane fx:id="secondGrid" alignment="CENTER" vgap="15" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <padding>
-            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
         </padding>
 
-        <TextField fx:id="search" promptText="Search"
-                   GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <Label id="welcomeMessage" alignment="CENTER" text="Welcome!" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-        <HBox spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="0">
-            <Button fx:id ="enter_button" onAction="#handleSearch" text="Enter"/>
+        <TextField fx:id="search" promptText="Search" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+
+        <HBox GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Button fx:id="enter_button" onAction="#handleSearch" text="Enter" />
         </HBox>
 
-        <Text fx:id="searchMessage" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Text fx:id="searchMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-        <TextField fx:id="username" promptText="Username"
-                   GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <TextField fx:id="username" promptText="Username" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
 
-        <PasswordField fx:id="password" promptText="Password"
-                       GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+        <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
 
-        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="5">
-            <Button fx:id ="login_button" onAction="#handleLoginAction" text="Log in"/>
+        <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Button fx:id="login_button" onAction="#handleLoginAction" text="Log in" />
         </HBox>
-        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
-            <Button fx:id ="register_button" onAction="#handleCreateAccountAction" text="Register"/>
-        </HBox>
-        <Text fx:id="loginMessage" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+
+        <Text fx:id="loginMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
     </GridPane>
-</GridPane>
 
+    <GridPane fx:id="thirdGrid" alignment="TOP_RIGHT" hgap="10" vgap="15" GridPane.columnIndex="2" GridPane.rowIndex="0">
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+        </padding>
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <Button fx:id="register_button" onAction="#handleCreateAccountAction" text="Register" />
+        </HBox>
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

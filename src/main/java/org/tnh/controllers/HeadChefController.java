@@ -82,9 +82,9 @@ public class HeadChefController {
     }
 
     public void handleChangeRecipe(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("change_recipe.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Head Chef - Change Recipe");
+        stage.setTitle("Head Chef - Search the recipe you want to change");
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();
     }

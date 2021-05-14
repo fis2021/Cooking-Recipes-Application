@@ -6,7 +6,7 @@
 
 <GridPane fx:id="mainGrid" fx:controller="org.tnh.controllers.SaveRecipeController"
           xmlns:fx="http://javafx.com/fxml"
-          stylesheets="styling/head.css"
+          stylesheets="styling/save_recipe.css"
           vgap="10" hgap="220">
     <padding>
         <Insets top="25.0" bottom="25.0" left="25.0" right="25.0"/>
@@ -19,6 +19,9 @@
     </GridPane>
     <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
         <GridPane alignment="CENTER" GridPane.rowIndex="10" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="220.0" bottom="25.0" left="140.0" right="25.0"/>
+            </padding>
             <TextField fx:id="search" promptText="Search"
                        GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <HBox spacing="10" GridPane.rowIndex="1" GridPane.columnIndex="1">

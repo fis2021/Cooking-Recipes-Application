@@ -42,6 +42,16 @@
     -fx-background-color: gray;
 }
 
+#rate_recipe_button
+{
+    -fx-background-color: gray;
+}
+
+#save_recipe_button
+{
+    -fx-background-color: gray;
+}
+
 #logout_button
 {
     -fx-background-color: red;
