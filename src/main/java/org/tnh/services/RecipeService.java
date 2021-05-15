@@ -14,13 +14,18 @@ import static org.tnh.services.FileSystemService.getPathToFile;
 public class RecipeService {
 
     private static ObjectRepository<Recipe> recipeRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("recipes.db").toFile())
                 .openOrCreate("test", "test");
 
         recipeRepository = database.getRepository(Recipe.class);
+    }
+
+    public static void closeDatabase() {
+        database.close();
     }
 
     public static void addRecipe(String username, String name, String calories, String time, String instructions) throws UncompletedFieldsException, RecipeAlreadyExistsException {
