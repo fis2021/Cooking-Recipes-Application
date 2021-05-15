@@ -3,7 +3,6 @@ package org.tnh.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.tnh.model.Recipe;
 import org.tnh.services.RecipeService;
@@ -12,8 +11,6 @@ import java.util.Objects;
 
 public class ListRecipesController extends AbstractTableViewController {
 
-    @FXML
-    private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating;
     @FXML
     private TableView<Recipe> recipesTableView;
 

@@ -3,7 +3,6 @@ package org.tnh.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import org.tnh.model.Recipe;
@@ -13,8 +12,6 @@ import java.util.Objects;
 
 public class SearchHeadChefController extends AbstractTableViewController {
 
-    @FXML
-    private TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating;
     @FXML
     private TableView<Recipe> recipesTableView;
 
