@@ -3,10 +3,10 @@ package org.tnh.model;
 @SuppressWarnings("unused")
 public class User {
 
-    private String username;
     private String firstName;
     private String lastName;
     private String email;
+    private String username;
     private String password;
     private String role;
 

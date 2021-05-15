@@ -36,8 +36,8 @@ public class UserService {
             throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException, FirstNameIsNotUniqueException
     {
         uncompletedFields(firstName, lastName, email,username, password, confirmPassword, role);
-        checkFirstNameIsNotUnique(firstName);
         checkUserDoesNotAlreadyExist(username);
+        checkFirstNameIsNotUnique(firstName);
         passwordNoUpperCase(password);
         passwordNotEqualConfirmPassword(password, confirmPassword);
         userRepository.insert(new User(firstName, lastName, email, username, encodePassword(username, password), role));
