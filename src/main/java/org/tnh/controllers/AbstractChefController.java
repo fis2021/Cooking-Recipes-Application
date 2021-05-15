@@ -18,6 +18,7 @@ public abstract class AbstractChefController {
 
     public void handleLogoutAction(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
+        alert.getDialogPane().lookupButton(ButtonType.YES).setId("Yes");
         alert.setHeaderText("Are you sure you want to log out?");
         alert.showAndWait();
         if(alert.getResult().getText().equals("Yes")) {

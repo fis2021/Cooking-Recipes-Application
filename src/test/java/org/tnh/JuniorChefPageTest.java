@@ -3,6 +3,7 @@ package org.tnh;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -100,17 +101,50 @@ class JuniorChefPageTest {
         robot.clickOn("#recipes_button");
         FxAssert.verifyThat(robot.window("Junior Chef - List of recipes"), WindowMatchers.isShowing());
     }
-/**
+
     @Test
     void testShowSavedRecipes(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException, RecipeAlreadySavedException {
         robot.clickOn("#saved_recipes_button");
-        assertThat(robot.lookup("#showMessage").queryText()).hasText("There are no recipes");
+        assertThat(robot.lookup("#savedMessage").queryText()).hasText("There are no recipes");
 
         RecipeService.addRecipe(USERNAME + 1, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addAdmirer(RECIPE_NAME, USERNAME);
 
         robot.clickOn("#saved_recipes_button");
-        FxAssert.verifyThat(robot.window("Junior Chef - List of recipes"), WindowMatchers.isShowing());
+        FxAssert.verifyThat(robot.window("Junior Chef - Saved recipes"), WindowMatchers.isShowing());
     }
-*/
+
+    @Test
+    void testSaveRecipe(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        robot.clickOn("#save_recipe_button");
+        assertThat(robot.lookup("#saveMessage").queryText()).hasText("There are no recipes");
+
+        RecipeService.addRecipe(USERNAME + 1, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+
+        robot.clickOn("#save_recipe_button");
+        FxAssert.verifyThat(robot.window("Junior Chef - Save"), WindowMatchers.isShowing());
+    }
+
+    @Test
+    void testRateRecipe(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        robot.clickOn("#rate_recipe_button");
+        assertThat(robot.lookup("#rateMessage").queryText()).hasText("There are no recipes");
+
+        RecipeService.addRecipe(USERNAME + 1, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+
+        robot.clickOn("#rate_recipe_button");
+        FxAssert.verifyThat(robot.window("Junior Chef - Rate"), WindowMatchers.isShowing());
+    }
+
+    @Test
+    void testLogout(FxRobot robot) {
+        robot.clickOn("#logout_button");
+
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+
+        robot.clickOn("Yes");
+
+        FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
+    }
+
 }
