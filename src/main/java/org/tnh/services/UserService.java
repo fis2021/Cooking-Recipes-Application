@@ -37,12 +37,12 @@ public class UserService {
     public static void addUser(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role)
             throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException
     {
-        uncompletedFields(firstName, lastName, email,username, password, confirmPassword, role);
+        uncompletedFields(firstName, lastName, email, username, password, confirmPassword, role);
         checkUserDoesNotAlreadyExist(username);
 
         passwordNoUpperCase(password);
         passwordNotEqualConfirmPassword(password, confirmPassword);
-        User user = new User(firstName, lastName, email, username, password, role);
+        User user = new User(firstName, lastName, email, username, encodePassword(username, password), role);
         UUID uu = user.getUser_id();
         while (!checkIDisUnique(uu)) {
             uu = user.rand_UUID();

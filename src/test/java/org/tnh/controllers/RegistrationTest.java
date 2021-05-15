@@ -84,6 +84,7 @@ class RegistrationTest {
 
         robot.clickOn("#register_button");
         assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Account created successfully!");
+        assertThat(UserService.getAllUsers()).size().isEqualTo(1);
 
         robot.clickOn("#register_button");
         assertThat(robot.lookup("#registrationMessage").queryText()).hasText(String.format("An account with the username %s already exists!", USERNAME));
@@ -112,6 +113,7 @@ class RegistrationTest {
 
         robot.clickOn("#register_button");
         assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Account created successfully!");
+        assertThat(UserService.getAllUsers()).size().isEqualTo(2);
 
         robot.clickOn("#back_button");
         FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
