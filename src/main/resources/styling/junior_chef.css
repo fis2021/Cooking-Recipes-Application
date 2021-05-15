@@ -15,7 +15,7 @@
 
 .button
 {
-    -fx-pref-width: 130px;
+    -fx-pref-width: 220px;
     -fx-pref-height: 15px;
     -fx-font-size: 15;
     -fx-font-weight: bold;
@@ -24,7 +24,7 @@
 
 #enter_button
 {
-    -fx-pref-width: 60px;
+    -fx-pref-width: 95px;
     -fx-pref-height: 5px;
     -fx-font-size: 12;
     -fx-font-weight: bold;
@@ -53,6 +53,12 @@
 }
 
 #logout_button
+{
+    -fx-background-color: red;
+    -fx-alignment: CENTER;
+}
+
+#delete_button
 {
     -fx-background-color: red;
     -fx-alignment: CENTER;
