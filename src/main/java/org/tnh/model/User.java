@@ -1,14 +1,12 @@
 package org.tnh.model;
 
-import org.dizitart.no2.objects.Id;
-
 @SuppressWarnings("unused")
 public class User {
-    @Id
+
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
-    private String username;
     private String password;
     private String role;
 

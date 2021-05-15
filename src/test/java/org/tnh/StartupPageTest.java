@@ -15,10 +15,7 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.matcher.base.WindowMatchers;
-import org.tnh.exceptions.ConfirmPasswordAndPasswordNotEqualException;
-import org.tnh.exceptions.PasswordNoUpperCaseException;
-import org.tnh.exceptions.UncompletedFieldsException;
-import org.tnh.exceptions.UsernameAlreadyExistsException;
+import org.tnh.exceptions.*;
 import org.tnh.services.FileSystemService;
 import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
@@ -71,7 +68,7 @@ class StartupPageTest {
     }
 
     @Test
-    void testLogin(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
+    void testLogin(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, FirstNameIsNotUniqueException {
         robot.clickOn("#login_button");
         assertThat(robot.lookup("#loginMessage").queryText()).hasText("Complete all fields!");
 

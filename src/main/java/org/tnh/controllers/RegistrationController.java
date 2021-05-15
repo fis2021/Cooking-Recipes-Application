@@ -11,10 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.tnh.exceptions.ConfirmPasswordAndPasswordNotEqualException;
-import org.tnh.exceptions.PasswordNoUpperCaseException;
-import org.tnh.exceptions.UncompletedFieldsException;
-import org.tnh.exceptions.UsernameAlreadyExistsException;
+import org.tnh.exceptions.*;
 import org.tnh.services.UserService;
 import java.util.Objects;
 
@@ -48,7 +45,7 @@ public class RegistrationController {
         try {
             UserService.addUser(firstName.getText(), lastName.getText(), email.getText(), username.getText(), password.getText(), confirmPassword.getText(), role.getValue());
             registrationMessage.setText("Account created successfully!");
-        } catch(UncompletedFieldsException | UsernameAlreadyExistsException | PasswordNoUpperCaseException | ConfirmPasswordAndPasswordNotEqualException e) {
+        } catch(UncompletedFieldsException | UsernameAlreadyExistsException | PasswordNoUpperCaseException | ConfirmPasswordAndPasswordNotEqualException | FirstNameIsNotUniqueException e) {
             registrationMessage.setText(e.getMessage());
         }
     }

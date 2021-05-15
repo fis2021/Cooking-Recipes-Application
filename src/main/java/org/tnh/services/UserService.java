@@ -32,8 +32,11 @@ public class UserService {
         database.close();
     }
 
-    public static void addUser(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role) throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException {
+    public static void addUser(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role)
+            throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException, FirstNameIsNotUniqueException
+    {
         uncompletedFields(firstName, lastName, email,username, password, confirmPassword, role);
+        checkFirstNameIsNotUnique(firstName);
         checkUserDoesNotAlreadyExist(username);
         passwordNoUpperCase(password);
         passwordNotEqualConfirmPassword(password, confirmPassword);
@@ -48,6 +51,13 @@ public class UserService {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
+        }
+    }
+
+    private static void checkFirstNameIsNotUnique(String firstName) throws FirstNameIsNotUniqueException {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(firstName, user.getFirstName()))
+                throw new FirstNameIsNotUniqueException();
         }
     }
 
