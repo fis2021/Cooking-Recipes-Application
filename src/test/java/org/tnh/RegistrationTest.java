@@ -23,17 +23,8 @@ import java.util.Objects;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
-
-@SuppressWarnings("all")
 @ExtendWith(ApplicationExtension.class)
 class RegistrationTest {
-
-    private final String FIRST_NAME = "Marius";
-    private final String LAST_NAME = "Ardelean";
-    private final String EMAIL = "marius@yahoo.com";
-    private final String USERNAME = "Marius";
-    private final String PASSWORD = "Marius";
-    private final String CONFIRM_PASSWORD = "Marius";
 
     @BeforeAll
     static void beforeAll() {
@@ -52,6 +43,7 @@ class RegistrationTest {
         UserService.closeDatabase();
     }
 
+    @SuppressWarnings("unused")
     @Start
     void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
@@ -67,16 +59,22 @@ class RegistrationTest {
         assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Complete all fields!");
 
         robot.clickOn("#firstName");
+        String FIRST_NAME = "Marius";
         robot.write(FIRST_NAME);
         robot.clickOn("#lastName");
+        String LAST_NAME = "Ardeen";
         robot.write(LAST_NAME);
         robot.clickOn("#email");
+        String EMAIL = "marius@yahoo.com";
         robot.write(EMAIL);
         robot.clickOn("#username");
+        String USERNAME = "Marius";
         robot.write(USERNAME);
         robot.clickOn("#password");
+        String PASSWORD = "Marius";
         robot.write(PASSWORD);
         robot.clickOn("#confirmPassword");
+        String CONFIRM_PASSWORD = "Marius";
         robot.write(CONFIRM_PASSWORD);
         robot.clickOn("#role");
         robot.type(KeyCode.DOWN);

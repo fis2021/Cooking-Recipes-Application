@@ -27,19 +27,10 @@ import java.util.Objects;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
-
-@SuppressWarnings("all")
 @ExtendWith(ApplicationExtension.class)
 class HeadChefPageTest {
 
-    private final String FIRST_NAME = "Marius";
-    private final String LAST_NAME = "Ardelean";
-    private final String EMAIL = "marius@yahoo.com";
     private final String USERNAME = "Marius";
-    private final String PASSWORD = "Marius";
-    private final String CONFIRM_PASSWORD = "Marius";
-    private final String ROLE = "Head Chef";
-
     private final String RECIPE_NAME = "Chicken";
     private final String CALORIES = "300";
     private final String TIME = "55";
@@ -56,6 +47,11 @@ class HeadChefPageTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
+        String FIRST_NAME = "Marius";
+        String LAST_NAME = "Ardeen";
+        String EMAIL = "marius@yahoo.com";
+        String PASSWORD = "Marius";
+        String ROLE = "Head Chef";
         LoggedUser.setLoggedUser(new User(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, ROLE));
     }
 
@@ -65,6 +61,7 @@ class HeadChefPageTest {
         RecipeService.closeDatabase();
     }
 
+    @SuppressWarnings("unused")
     @Start
     void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head_chef.fxml")));

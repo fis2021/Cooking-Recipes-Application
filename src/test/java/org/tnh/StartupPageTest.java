@@ -25,19 +25,10 @@ import java.util.Objects;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
-
-@SuppressWarnings("all")
 @ExtendWith(ApplicationExtension.class)
 class StartupPageTest {
 
-    private final String FIRST_NAME = "Edward";
-    private final String LAST_NAME = "Rosco";
-    private final String EMAIL = "edward@yahoo.com";
     private final String USERNAME = "Edward26";
-    private final String PASSWORD = "Edw@rd62";
-    private final String CONFIRM_PASSWORD = "Edw@rd62";
-    private final String ROLE = "Head Chef";
-
     private final String RECIPE_NAME = "Chicken";
     private final String CALORIES = "300";
     private final String TIME = "55";
@@ -62,6 +53,7 @@ class StartupPageTest {
         RecipeService.closeDatabase();
     }
 
+    @SuppressWarnings("unused")
     @Start
     void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("startup_page.fxml")));
@@ -79,11 +71,17 @@ class StartupPageTest {
         robot.clickOn("#username");
         robot.write(USERNAME);
         robot.clickOn("#password");
+        String PASSWORD = "Edw@rd62";
         robot.write(PASSWORD);
 
         robot.clickOn("#login_button");
         assertThat(robot.lookup("#loginMessage").queryText()).hasText("Invalid username");
 
+        String FIRST_NAME = "Edward";
+        String LAST_NAME = "Rosco";
+        String EMAIL = "edward@yahoo.com";
+        String CONFIRM_PASSWORD = "Edw@rd62";
+        String ROLE = "Head Chef";
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD + 1, CONFIRM_PASSWORD + 1, ROLE);
 
         robot.clickOn("#login_button");
