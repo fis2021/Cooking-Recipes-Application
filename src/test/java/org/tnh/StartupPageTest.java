@@ -38,7 +38,11 @@ class StartupPageTest {
     private final String PASSWORD = "Edw@rd62";
     private final String CONFIRM_PASSWORD = "Edw@rd62";
     private final String ROLE = "Head Chef";
+
     private final String RECIPE_NAME = "Chicken";
+    private final String CALORIES = "300";
+    private final String TIME = "55";
+    private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
 
     @BeforeAll
     static void beforeAll() {
@@ -94,7 +98,7 @@ class StartupPageTest {
     }
 
     @Test
-    void testSearch(FxRobot robot) {
+    void testSearch(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
         robot.clickOn("#enter_button");
         assertThat(robot.lookup("#searchMessage").queryText()).hasText("Complete all fields!");
 
@@ -104,7 +108,26 @@ class StartupPageTest {
         robot.clickOn("#enter_button");
         assertThat(robot.lookup("#searchMessage").queryText()).hasText("Could not find recipes!");
 
+        RecipeService.addRecipe(USERNAME, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
 
+        robot.clickOn("#enter_button");
+        FxAssert.verifyThat(robot.window("Search"), WindowMatchers.isShowing());
     }
 
+    @Test
+    void testRegister(FxRobot robot) {
+        robot.clickOn("#register_button");
+        FxAssert.verifyThat(robot.window("Registration"), WindowMatchers.isShowing());
+    }
+
+    @Test
+    void testShowRecipes(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        robot.clickOn("#recipes_button");
+        assertThat(robot.lookup("#showMessage").queryText()).hasText("There are no recipes");
+
+        RecipeService.addRecipe(USERNAME, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+
+        robot.clickOn("#recipes_button");
+        FxAssert.verifyThat(robot.window("List of recipes"), WindowMatchers.isShowing());
+    }
 }
