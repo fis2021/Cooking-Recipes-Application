@@ -1,4 +1,4 @@
-package org.tnh.controllers;
+package org.tnh;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
