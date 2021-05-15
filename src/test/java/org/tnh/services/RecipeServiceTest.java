@@ -3,6 +3,7 @@ package org.tnh.services;
 import org.apache.commons.io.FileUtils;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,10 +22,14 @@ class RecipeServiceTest {
     private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
     private final String GRADE = "5";
 
-    @BeforeEach
-    void setUp() throws Exception {
+    @BeforeAll
+    static void beforeAll() {
         FileSystemService.APPLICATION_FOLDER = ".test-cooking-recipes";
         FileSystemService.initDirectory();
+    }
+
+    @BeforeEach
+    void setUp() throws Exception {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         RecipeService.initDatabase();
     }

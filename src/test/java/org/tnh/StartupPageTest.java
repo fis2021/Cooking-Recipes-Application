@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,10 +42,14 @@ class StartupPageTest {
     private final String CONFIRM_PASSWORD = "Edw@rd62";
     private final String ROLE = "Head Chef";
 
-    @BeforeEach
-    void setUp() throws Exception {
+    @BeforeAll
+    static void beforeAll() {
         FileSystemService.APPLICATION_FOLDER = ".test-cooking-recipes";
         FileSystemService.initDirectory();
+    }
+
+    @BeforeEach
+    void setUp() throws Exception {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
