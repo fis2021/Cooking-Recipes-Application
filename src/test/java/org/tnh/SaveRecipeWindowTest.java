@@ -31,12 +31,7 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class SaveRecipeWindowTest {
 
-    private final String FIRST_NAME = "Edward";
-    private final String LAST_NAME = "Rosco";
-    private final String EMAIL = "edward@yahoo.com";
     private final String USERNAME = "Edward26";
-    private final String PASSWORD = "Edw@rd62";
-    private final String ROLE = "Junior Chef";
 
     private final String RECIPE_NAME = "Chicken";
     private final String CALORIES = "300";
@@ -54,6 +49,11 @@ class SaveRecipeWindowTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
+        String FIRST_NAME = "Edward";
+        String LAST_NAME = "Rosco";
+        String EMAIL = "edward@yahoo.com";
+        String PASSWORD = "Edw@rd62";
+        String ROLE = "Junior Chef";
         LoggedUser.setLoggedUser(new User(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, ROLE));
     }
 
@@ -96,7 +96,7 @@ class SaveRecipeWindowTest {
         robot.clickOn("#search");
         robot.write(RECIPE_NAME);
         robot.clickOn("#enter_button");
-        Recipe recipe = RecipeService.populateSavedRecipesList(USERNAME).get(0);
+        Recipe recipe = Objects.requireNonNull(RecipeService.populateSavedRecipesList(USERNAME)).get(0);
         Assertions.assertThat(recipe.getCalories()).isEqualTo(CALORIES);
     }
 
