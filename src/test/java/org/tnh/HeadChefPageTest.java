@@ -99,12 +99,12 @@ class HeadChefPageTest {
 
     @Test
     void testShowOwnRecipes(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException{
-        robot.clickOn("#own_recipes_button");
+        robot.clickOn("#owned_recipes_button");
         assertThat(robot.lookup("#ownedMessage").queryText()).hasText("There are no recipes");
 
         RecipeService.addRecipe(USERNAME, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
 
-        robot.clickOn("#own_recipes_button");
+        robot.clickOn("#owned_recipes_button");
         FxAssert.verifyThat(robot.window("Head Chef - List of owned recipes"), WindowMatchers.isShowing());
     }
 
