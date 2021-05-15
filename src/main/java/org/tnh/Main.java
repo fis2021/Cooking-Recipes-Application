@@ -6,12 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import org.tnh.services.FileSystemService;
 import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -26,8 +23,6 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
-
-
 
     public static void main(String[] args) {
         launch(args);

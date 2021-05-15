@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 <GridPane fx:id="mainGrid" fx:controller="org.tnh.controllers.SaveRecipeController"
           xmlns:fx="http://javafx.com/fxml"
           stylesheets="styling/save_recipe.css"
@@ -17,8 +19,9 @@
         </padding>
         <Button fx:id ="back_button" onAction="#handleBackAction" text="Back" alignment="TOP_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     </GridPane>
+
     <GridPane id="searchGrid" GridPane.rowIndex="0" GridPane.columnIndex="1" vgap="10" hgap="10">
-        <GridPane alignment="CENTER" GridPane.rowIndex="10" GridPane.columnIndex="0">
+        <GridPane GridPane.rowIndex="10" GridPane.columnIndex="0">
             <padding>
                 <Insets top="220.0" bottom="25.0" left="140.0" right="25.0"/>
             </padding>
@@ -27,6 +30,16 @@
             <HBox spacing="10" GridPane.rowIndex="1" GridPane.columnIndex="1">
                 <Button fx:id ="enter_button" onAction="#handleSave" text="Save"/>
             </HBox>
+        </GridPane>
+        <GridPane id="error_messageGrid" GridPane.rowIndex="11" GridPane.columnIndex="0" vgap="10" hgap="10">
+            <padding>
+                <Insets top="-130.0" bottom="25.0" left="140.0" right="25.0"/>
+            </padding>
+            <Text fx:id="searchMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="11">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Text>
         </GridPane>
     </GridPane>
 </GridPane>

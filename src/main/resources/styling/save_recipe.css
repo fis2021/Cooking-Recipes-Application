@@ -27,3 +27,8 @@
     -fx-text-fill: white;
     -fx-background-color: gray;
 }
+
+#searchMessage
+{
+    -fx-font-weight: bold;
+}

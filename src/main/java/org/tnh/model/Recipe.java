@@ -1,6 +1,9 @@
 package org.tnh.model;
 
 import org.dizitart.no2.objects.Id;
+import org.tnh.exceptions.RecipeAlreadyExistsException;
+import org.tnh.exceptions.RecipeAlreadyRatedException;
+import org.tnh.exceptions.RecipeAlreadySavedException;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -72,17 +75,17 @@ public class Recipe {
         return name.equals(r.name);
     }
 
-    public void addAdmirer(String name) {
+    public void addAdmirer(String name) throws RecipeAlreadySavedException{
         if (admirers.contains(name)) {
-            System.out.println("You already saved this recipe!");
+            throw new RecipeAlreadySavedException();
         } else {
             admirers.add(name);
         }
     }
 
-    public void addRating(String rater, int score) {
+    public void addRating(String rater, int score) throws RecipeAlreadyRatedException{
         if (raters.contains(rater)) {
-            System.out.println("You already rated this recipe!");
+            throw new RecipeAlreadyRatedException();
         } else {
             raters.add(rater);
             this.score += score;
