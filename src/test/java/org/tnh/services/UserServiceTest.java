@@ -6,10 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.tnh.exceptions.ConfirmPasswordAndPasswordNotEqualException;
-import org.tnh.exceptions.PasswordNoUpperCaseException;
-import org.tnh.exceptions.UncompletedFieldsException;
-import org.tnh.exceptions.UsernameAlreadyExistsException;
+import org.tnh.exceptions.*;
 import org.tnh.model.User;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -65,6 +62,71 @@ class UserServiceTest {
             UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
             UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         });
+    }
+
+    @Test
+    void testAllFieldsAreCompleted() {
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser("", LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser(FIRST_NAME, "", EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, "", ROLE));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ""));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, "", PASSWORD, CONFIRM_PASSWORD, ROLE));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser(FIRST_NAME, "", EMAIL, USERNAME, PASSWORD, "", ROLE));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.addUser("", "", "", "", "", "", ""));
+    }
+
+    @Test
+    void testPasswordHasAtLeastOneUpperCaseLetter() {
+        assertThrows(PasswordNoUpperCaseException.class, () ->
+                UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, "mere", "mere", ROLE));
+    }
+
+    @Test
+    void testConfirmPasswordFieldIsTheSameAsPasswordField() {
+        assertThrows(ConfirmPasswordAndPasswordNotEqualException.class, () ->
+                UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD + 1, CONFIRM_PASSWORD, ROLE));
+        assertThrows(ConfirmPasswordAndPasswordNotEqualException.class, () ->
+                UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD + 1, ROLE));
+    }
+
+    @Test
+    void testLoggedUserMethod() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, InvalidPasswordException, InvalidUsernameException {
+        UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+        assertThrows(InvalidUsernameException.class, () ->
+                UserService.loggedUser(USERNAME + 1, PASSWORD));
+        assertThrows(InvalidPasswordException.class, () ->
+                UserService.loggedUser(USERNAME, PASSWORD + 1));
+        assertThat(UserService.loggedUser(USERNAME, PASSWORD).getUsername()).isEqualTo(USERNAME);
+        assertThat(UserService.loggedUser(USERNAME, PASSWORD).getPassword()).isEqualTo(UserService.encodePassword(USERNAME, PASSWORD));
+        assertThat(UserService.loggedUser(USERNAME, PASSWORD).getRole()).isEqualTo(ROLE);
+    }
+
+    @Test
+    void testAllLoginFieldsAreCompleted() {
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.loginUncompletedFields(USERNAME, ""));
+        assertThrows(UncompletedFieldsException.class, () ->
+                UserService.loginUncompletedFields("", PASSWORD));
+    }
+
+    @Test
+    void testGetUserRole() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
+        UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+        assertThat(UserService.getUserRole(USERNAME)).isEqualTo(ROLE);
+    }
+
+    @Test
+    void testEncoding() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
+        UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+        User user = UserService.getAllUsers().get(0);
+        assertThat(UserService.encodePassword(USERNAME, PASSWORD)).isEqualTo(user.getPassword());
     }
 
 }

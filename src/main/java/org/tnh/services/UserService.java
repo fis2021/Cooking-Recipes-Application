@@ -76,24 +76,20 @@ public class UserService {
             throw new ConfirmPasswordAndPasswordNotEqualException("The 2 password fields are not the same!");
     }
 
-    @SuppressWarnings("all")
+
     public static User loggedUser(String username,String password) throws InvalidUsernameException, InvalidPasswordException {
-        int ok1 = 0, ok2 = 0;
+        int ok = 0;
         for(User user : userRepository.find())
         {
             if (Objects.equals(username, user.getUsername()))
-            {   ok1 = 1;
+            {   ok = 1;
                 if (encodePassword(username, password).equals(user.getPassword())) {
-                    ok2 = 1;
                     return user;
                 }
             }
         }
-        if(ok1 == 0)
-            throw new InvalidUsernameException("Invalid username");
-        if(ok2 == 0)
-            throw new InvalidPasswordException("Invalid password");
-        return null;
+        if (ok == 0)    throw new InvalidUsernameException("Invalid username");
+        else            throw new InvalidPasswordException("Invalid password");
     }
 
     public static void loginUncompletedFields(String username, String password) throws UncompletedFieldsException {
