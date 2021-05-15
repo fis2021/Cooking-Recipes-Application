@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.tnh.exceptions.*;
 import org.tnh.model.Recipe;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
@@ -127,6 +129,36 @@ class RecipeServiceTest {
                 RecipeService.emptyRatingFields("", GRADE));
         assertThrows(UncompletedFieldsException.class, () ->
                 RecipeService.emptyRatingFields("", ""));
+    }
+
+    @Test
+    void testRatingIsInsideBoundaries() {
+        assertThrows(InvalidGradeException.class, () ->
+                RecipeService.invalidGrade("-22"));
+        assertThrows(InvalidGradeException.class, () ->
+                RecipeService.invalidGrade("33"));
+    }
+
+    @Test
+    void testCreatedArrayContainsAllTheRecipesInsideTheDatabase() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, NAME + 1, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
+        ArrayList<Recipe> recipes = RecipeService.populateData();
+        assertThat(recipes.get(0).getName()).isEqualTo(NAME);
+        assertThat(recipes.get(1).getName()).isEqualTo(NAME + 1);
+        assertThat(recipes.get(2).getName()).isEqualTo(NAME + 2);
+    }
+
+    @Test
+    void testCreatedArrayContainsAllTheRecipesInsideTheDatabaseThatContainSearchedString() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, "", CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
+        ArrayList<Recipe> recipes = RecipeService.populateDataSearch(NAME);
+        assertThat(recipes.get(0).getName()).isEqualTo(NAME);
+        assertThat(recipes.get(1).getName()).isEqualTo(NAME + 1);
+        assertThat(recipes.get(2).getName()).isEqualTo(NAME + 2);
     }
 
 }

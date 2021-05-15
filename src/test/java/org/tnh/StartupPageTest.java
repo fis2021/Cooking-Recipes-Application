@@ -72,26 +72,26 @@ class StartupPageTest {
 
     @Test
     void testLogin(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
-        robot.clickOn("#startup_login_button");
-        assertThat(robot.lookup("#startup_login_message").queryText()).hasText("Complete all fields!");
+        robot.clickOn("#login_button");
+        assertThat(robot.lookup("#loginMessage").queryText()).hasText("Complete all fields!");
 
-        robot.clickOn("#startup_username");
+        robot.clickOn("#username");
         robot.write(USERNAME);
-        robot.clickOn("#startup_password");
+        robot.clickOn("#password");
         robot.write(PASSWORD);
 
-        robot.clickOn("#startup_login_button");
-        assertThat(robot.lookup("#startup_login_message").queryText()).hasText("Invalid username");
+        robot.clickOn("#login_button");
+        assertThat(robot.lookup("#loginMessage").queryText()).hasText("Invalid username");
 
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD + 1, CONFIRM_PASSWORD + 1, ROLE);
 
-        robot.clickOn("#startup_login_button");
-        assertThat(robot.lookup("#startup_login_message").queryText()).hasText("Invalid password");
+        robot.clickOn("#login_button");
+        assertThat(robot.lookup("#loginMessage").queryText()).hasText("Invalid password");
 
-        robot.clickOn("#startup_password");
+        robot.clickOn("#password");
         robot.write("1");
 
-        robot.clickOn("#startup_login_button");
+        robot.clickOn("#login_button");
         FxAssert.verifyThat(robot.window("Head Chef"), WindowMatchers.isShowing());
     }
 

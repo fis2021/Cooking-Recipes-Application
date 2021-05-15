@@ -47,15 +47,15 @@
             <Font size="14.0" />
          </font></Text>
 
-        <TextField fx:id="username" id="startup_username" promptText="Username" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+        <TextField fx:id="username" promptText="Username" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
 
-        <PasswordField fx:id="password" id="startup_password" promptText="Password" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+        <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
 
         <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
-            <Button fx:id="login_button" id="startup_login_button" onAction="#handleLoginAction" text="Log in" />
+            <Button fx:id="login_button" onAction="#handleLoginAction" text="Log in" />
         </HBox>
 
-        <Text fx:id="loginMessage" id="startup_login_message" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
+        <Text fx:id="loginMessage" fill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <font>
             <Font size="14.0" />
          </font></Text>
