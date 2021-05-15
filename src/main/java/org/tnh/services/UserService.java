@@ -34,6 +34,15 @@ public class UserService {
         database.close();
     }
 
+    public static void deleteAccount(String username) {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                userRepository.remove(user);
+                break;
+            }
+        }
+    }
+
     public static void addUser(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role)
             throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException
     {

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="mainGrid" hgap="220" stylesheets="styling/head.css" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.tnh.controllers.HeadChefController">
+<GridPane fx:id="mainGrid" hgap="220" stylesheets="styling/head_chef.css" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.tnh.controllers.HeadChefController">
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
@@ -63,5 +63,13 @@
                <Font size="14.0" />
             </font></Text>
         </GridPane>
+    </GridPane>
+    <GridPane id="deleteGrid" hgap="10" vgap="10" GridPane.columnIndex="2" GridPane.rowIndex="0">
+        <padding>
+            <Insets bottom="25.0" right="25.0" top="615" />
+        </padding>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="delete_button" onAction="#handleDeleteAccountAction" text="Delete account" />
+        </HBox>
     </GridPane>
 </GridPane>
