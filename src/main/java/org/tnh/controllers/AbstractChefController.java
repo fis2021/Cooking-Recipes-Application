@@ -20,7 +20,7 @@ public abstract class AbstractChefController {
 
     public void handleLogoutAction(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-        alert.getDialogPane().lookupButton(ButtonType.YES).setId("Yes");
+        alert.getDialogPane().lookupButton(ButtonType.YES).setId("Yes_logout");
         alert.setHeaderText("Are you sure you want to log out?");
         alert.showAndWait();
         if(alert.getResult().getText().equals("Yes")) {
@@ -34,7 +34,7 @@ public abstract class AbstractChefController {
 
     public void handleDeleteAccountAction(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO);
-        alert.getDialogPane().lookupButton(ButtonType.YES).setId("Yes");
+        alert.getDialogPane().lookupButton(ButtonType.YES).setId("Yes_delete");
         alert.setHeaderText("Are you sure you want to delete your account?");
         alert.showAndWait();
         if(alert.getResult().getText().equals("Yes")) {
