@@ -62,10 +62,18 @@ class UserServiceTest {
     }
 
     @Test
-    void testUserCanNotBeAddedTwice() {
+    void testUserWithSameNameCanNotBeAddedTwice() {
+        assertThrows(FirstNameIsNotUniqueException.class, () -> {
+            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+        });
+    }
+
+    @Test
+    void testUserWithSameUsernameCanNotBeAddedTwice() {
         assertThrows(UsernameAlreadyExistsException.class, () -> {
             UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
-            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
+            UserService.addUser(FIRST_NAME + 1, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         });
     }
 

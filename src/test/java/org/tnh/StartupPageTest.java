@@ -38,6 +38,7 @@ class StartupPageTest {
     private final String PASSWORD = "Edw@rd62";
     private final String CONFIRM_PASSWORD = "Edw@rd62";
     private final String ROLE = "Head Chef";
+    private final String RECIPE_NAME = "Chicken";
 
     @BeforeAll
     static void beforeAll() {
@@ -90,6 +91,20 @@ class StartupPageTest {
 
         robot.clickOn("#login_button");
         FxAssert.verifyThat(robot.window("Head Chef"), WindowMatchers.isShowing());
+    }
+
+    @Test
+    void testSearch(FxRobot robot) {
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#searchMessage").queryText()).hasText("Complete all fields!");
+
+        robot.clickOn("#search");
+        robot.write(RECIPE_NAME);
+
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#searchMessage").queryText()).hasText("Could not find recipes!");
+
+
     }
 
 }
