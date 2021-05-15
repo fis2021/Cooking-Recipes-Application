@@ -16,29 +16,24 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.matcher.base.WindowMatchers;
-import org.tnh.exceptions.ConfirmPasswordAndPasswordNotEqualException;
-import org.tnh.exceptions.PasswordNoUpperCaseException;
-import org.tnh.exceptions.UncompletedFieldsException;
-import org.tnh.exceptions.UsernameAlreadyExistsException;
 import org.tnh.services.FileSystemService;
-import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
+
+@SuppressWarnings("all")
 @ExtendWith(ApplicationExtension.class)
 class RegistrationTest {
 
-    private final String FIRST_NAME = "Nicu";
-    private final String LAST_NAME = "Ardelean";
+    private final String FIRST_NAME = "Nico";
+    private final String LAST_NAME = "Ardeen";
     private final String EMAIL = "nicu@yahoo.com";
-    private final String USERNAME = "Nicu";
-    private final String PASSWORD = "Nicu";
-    private final String CONFIRM_PASSWORD = "Nicu";
-    private final String ROLE = "Head Chef";
+    private final String USERNAME = "Nico";
+    private final String PASSWORD = "Nico";
+    private final String CONFIRM_PASSWORD = "Nico";
 
     @BeforeAll
     static void beforeAll() {
@@ -67,7 +62,7 @@ class RegistrationTest {
     }
 
     @Test
-    void testRegister(FxRobot robot) throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException {
+    void testRegister(FxRobot robot) {
         robot.clickOn("#register_button");
         assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Complete all fields!");
 
