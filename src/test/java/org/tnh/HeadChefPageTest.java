@@ -1,10 +1,8 @@
 package org.tnh;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -25,8 +23,6 @@ import org.tnh.services.FileSystemService;
 import org.tnh.services.RecipeService;
 import org.tnh.services.UserService;
 
-import java.io.IOException;
-import java.util.EventObject;
 import java.util.Objects;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
@@ -71,7 +67,7 @@ class HeadChefPageTest {
 
     @Start
     void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head_chef.fxml")));
         primaryStage.setTitle("Head Chef");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setResizable(false);

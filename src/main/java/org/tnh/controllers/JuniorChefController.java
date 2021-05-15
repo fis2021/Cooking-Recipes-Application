@@ -72,7 +72,7 @@ public class JuniorChefController extends AbstractChefController {
             RecipeService.uncompletedNameField(search.getText());
             RecipeService.couldNotFindSimilarRecipeNames(search.getText());
             setSearchValue();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchJuniorChef.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_junior_chef.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setTitle("Junior Chef - Search");
             stage.setScene(new Scene(root, 1280, 720));

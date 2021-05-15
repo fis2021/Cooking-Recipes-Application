@@ -3,7 +3,6 @@ package org.tnh;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -67,7 +66,7 @@ class JuniorChefPageTest {
 
     @Start
     void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior_chef.fxml")));
         primaryStage.setTitle("Junior Chef");
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setResizable(false);

@@ -15,10 +15,10 @@ public abstract class AbstractWindowViewController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root;
         if(stage.getTitle().contains("Head Chef")) {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head_chef.fxml")));
             stage.setTitle("Head Chef");
         } else if(stage.getTitle().contains("Junior Chef")) {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior_chef.fxml")));
             stage.setTitle("Junior Chef");
         } else {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("startup_page.fxml")));

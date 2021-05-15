@@ -24,16 +24,7 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-      <columnConstraints>
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
-
     </GridPane>
-
     <GridPane fx:id="secondGrid" alignment="CENTER" vgap="15" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -64,26 +55,7 @@
          <font>
             <Font size="14.0" />
          </font></Text>
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
     </GridPane>
-
     <GridPane fx:id="thirdGrid" alignment="TOP_RIGHT" hgap="10" vgap="15" GridPane.columnIndex="2" GridPane.rowIndex="0">
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -91,19 +63,5 @@
         <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <Button fx:id="register_button" onAction="#handleCreateAccountAction" text="Register" />
         </HBox>
-      <columnConstraints>
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-      </rowConstraints>
     </GridPane>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
 </GridPane>

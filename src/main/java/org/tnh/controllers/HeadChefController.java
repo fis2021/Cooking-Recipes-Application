@@ -55,7 +55,7 @@ public class HeadChefController extends AbstractChefController {
     public void handleShowOwnRecipesAction(ActionEvent event) throws Exception {
         try {
             RecipeService.emptyCreatedRecipesDataBase(LoggedUser.getLoggedUser().getUsername());
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("own_recipes.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("owned_recipes.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Head Chef - List of owned recipes");
             stage.setScene(new Scene(root, 1280, 720));
@@ -83,7 +83,7 @@ public class HeadChefController extends AbstractChefController {
             RecipeService.uncompletedNameField(search.getText());
             RecipeService.couldNotFindSimilarRecipeNames(search.getText());
             setSearchValue();
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchHeadChef.fxml")));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_head_chef.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setTitle("Head Chef - Search");
             stage.setScene(new Scene(root, 1280, 720));

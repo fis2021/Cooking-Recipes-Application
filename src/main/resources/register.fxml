@@ -28,19 +28,7 @@
         <PasswordField fx:id="password" promptText="Password" GridPane.columnIndex="0" GridPane.rowIndex="4" />
 
         <PasswordField fx:id="confirmPassword" promptText="Confirm Password" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
     </GridPane>
-
     <GridPane id="thirdGrid" hgap="10" vgap="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
         <Label id="role_label" prefHeight="18.0" prefWidth="26.0" text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -53,25 +41,5 @@
             <Button fx:id="register_button" onAction="#handleRegisterAction" prefHeight="26.0" prefWidth="66.0" text="Register" />
             <Button fx:id="back_button" onAction="#handleBackFirstPageAction" prefHeight="26.0" prefWidth="66.0" text="Back" />
         </HBox>
-      <columnConstraints>
-         <ColumnConstraints />
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
     </GridPane>
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-
 </GridPane>

@@ -21,7 +21,7 @@
             </font>
         </Text>
 
-        <Button fx:id="own_recipes_button" onAction="#handleShowOwnRecipesAction" text="Own recipes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Button fx:id="owned_recipes_button" onAction="#handleShowOwnRecipesAction" text="Owned recipes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <Text fx:id="ownedMessage" fill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3">
             <font>
                 <Font size="14.0" />
@@ -48,60 +48,7 @@
                 <Font size="14.0" />
             </font>
         </Text>
-
         <Button fx:id="logout_button" alignment="BOTTOM_LEFT" onAction="#handleLogoutAction" text="Logout" GridPane.columnIndex="0" GridPane.rowIndex="35" />
-
-      <columnConstraints>
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
     </GridPane>
     <GridPane id="searchGrid" hgap="10" vgap="10" GridPane.columnIndex="1" GridPane.rowIndex="0">
         <GridPane alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="10">
@@ -115,39 +62,6 @@
             <font>
                <Font size="14.0" />
             </font></Text>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-
         </GridPane>
-      <columnConstraints>
-         <ColumnConstraints />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-         <RowConstraints />
-      </rowConstraints>
     </GridPane>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
 </GridPane>

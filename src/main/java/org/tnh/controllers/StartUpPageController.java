@@ -58,11 +58,11 @@ public class StartUpPageController {
             UserService.loginUncompletedFields(username.getText(), password.getText());
             LoggedUser.setLoggedUser(UserService.loggedUser(username.getText(), password.getText()));
             if (UserService.getUserRole(username.getText()).equals("Junior Chef")) {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("junior_chef.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("Junior Chef");
             } else {
-                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head.fxml")));
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("head_chef.fxml")));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle("Head Chef");
             }
