@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import javafx.scene.text.Text;
-import org.tnh.exceptions.CouldNotFindRecipeException;
-import org.tnh.exceptions.InvalidGradeException;
-import org.tnh.exceptions.RecipeAlreadyRatedException;
-import org.tnh.exceptions.UncompletedFieldsException;
+import org.tnh.exceptions.*;
 import org.tnh.model.LoggedUser;
 import org.tnh.services.RecipeService;
 
@@ -26,7 +23,7 @@ public class RateRecipeController extends AbstractWindowViewController {
             RecipeService.invalidGrade(rating.getText());
             RecipeService.addRating(recipe.getText(), rating.getText(), LoggedUser.getLoggedUser().getUsername());
             recipeMessage.setText("Recipe graded successfully!");
-        } catch(RecipeAlreadyRatedException | CouldNotFindRecipeException | UncompletedFieldsException | InvalidGradeException e){
+        } catch(RecipeAlreadyRatedException | CouldNotFindRecipeException | UncompletedFieldsException | InvalidGradeException | YouCantRateYourRecipeException e){
             recipeMessage.setText(e.getMessage());
         }
     }

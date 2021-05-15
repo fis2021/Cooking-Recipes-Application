@@ -198,7 +198,7 @@ class RecipeServiceTest {
     }
 
     @Test
-    void testRatingsAreGivenCorrectly() throws RecipeAlreadyExistsException, UncompletedFieldsException, RecipeAlreadyRatedException {
+    void testRatingsAreGivenCorrectly() throws RecipeAlreadyExistsException, UncompletedFieldsException, RecipeAlreadyRatedException, YouCantRateYourRecipeException {
         RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addRating(NAME, "5", USERNAME + 2);
         ArrayList<Recipe> recipes = RecipeService.populateData();

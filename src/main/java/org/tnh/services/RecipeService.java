@@ -196,9 +196,10 @@ public class RecipeService {
         }
     }
 
-    public static void addRating(String recipe_name, String score, String username) throws RecipeAlreadyRatedException{
+    public static void addRating(String recipe_name, String score, String username) throws RecipeAlreadyRatedException, YouCantRateYourRecipeException{
         for (Recipe recipe : recipeRepository.find()) {
-            if (recipe_name.equals(recipe.getName()) && !(username.equals(recipe.getUsername()))) {
+            if (recipe_name.equals(recipe.getName())) {
+                if(username.equals(recipe.getUsername())) throw new YouCantRateYourRecipeException();
                 Recipe newRecipe = recipe.copyData();
                 newRecipe.addRating(username, Integer.parseInt(score));
                 recipeRepository.remove(recipe);
