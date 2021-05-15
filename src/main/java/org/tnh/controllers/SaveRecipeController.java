@@ -20,7 +20,7 @@ public class SaveRecipeController extends AbstractWindowViewController {
     public void handleSave() {
         try{
             RecipeService.uncompletedNameField(search.getText());
-            RecipeService.couldNotFindThisRecipe(search.getText());
+            RecipeService.couldNotFindThisExactRecipeName(search.getText());
             RecipeService.addAdmirer(search.getText(), LoggedUser.getLoggedUser().getUsername());
             searchMessage.setText("The recipe has been saved to favorites!");
         } catch(CouldNotFindRecipeException | UncompletedFieldsException | RecipeAlreadySavedException e){

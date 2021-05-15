@@ -37,7 +37,7 @@ public class SearchRecipeToChangeController extends AbstractWindowViewController
     public void handleEnterAction(ActionEvent event) throws Exception {
         try {
             RecipeService.uncompletedNameField(search_recipe.getText());
-            RecipeService.couldNotFindThisRecipe(search_recipe.getText());
+            RecipeService.couldNotFindThisExactRecipeName(search_recipe.getText());
             if (RecipeService.recipeFound(search_recipe.getText(), LoggedUser.getLoggedUser().getUsername())) {
                 setSearchValue();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("change_recipe.fxml")));

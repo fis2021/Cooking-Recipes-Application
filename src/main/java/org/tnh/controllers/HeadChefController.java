@@ -100,7 +100,7 @@ public class HeadChefController {
     public void handleSearch(ActionEvent event) throws Exception {
         try {
             RecipeService.uncompletedNameField(search.getText());
-            RecipeService.couldNotFindRecipe(search.getText());
+            RecipeService.couldNotFindSimilarRecipeNames(search.getText());
             setSearchValue();
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchHeadChef.fxml")));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

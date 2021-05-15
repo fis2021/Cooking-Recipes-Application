@@ -5,7 +5,9 @@ import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.tnh.exceptions.*;
 import org.tnh.model.Recipe;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
@@ -38,6 +40,10 @@ public class RecipeService {
             checkIDisUnique(u);
         }
         recipeRepository.insert(r);
+    }
+
+    public static List<Recipe> getAllRecipes() {
+        return recipeRepository.find().toList();
     }
 
     public static boolean checkIDisUnique(UUID u) {
@@ -74,7 +80,7 @@ public class RecipeService {
         if (!pattern.matcher(name).find()) throw new UncompletedFieldsException();
     }
 
-    public static void couldNotFindRecipe(String name) throws CouldNotFindRecipeException
+    public static void couldNotFindSimilarRecipeNames(String name) throws CouldNotFindRecipeException
     {
         boolean ok = false;
         for (Recipe recipe : recipeRepository.find()) {
@@ -86,11 +92,11 @@ public class RecipeService {
         if (!ok) throw new CouldNotFindRecipeException();
     }
 
-    public static void couldNotFindThisRecipe(String name) throws CouldNotFindRecipeException
+    public static void couldNotFindThisExactRecipeName(String name) throws CouldNotFindRecipeException
     {
         boolean ok = false;
         for (Recipe recipe : recipeRepository.find()) {
-            if (recipe.getName().contains(name)) {
+            if (recipe.getName().equals(name)) {
                 ok = true;
                 break;
             }
