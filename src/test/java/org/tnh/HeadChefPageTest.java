@@ -131,6 +131,17 @@ class HeadChefPageTest {
     }
 
     @Test
+    void testChangeRecipe(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        robot.clickOn("#change_recipe_button");
+        assertThat(robot.lookup("#modifyMessage").queryText()).hasText("There are no recipes");
+
+        RecipeService.addRecipe(USERNAME, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+
+        robot.clickOn("#change_recipe_button");
+        FxAssert.verifyThat(robot.window("Head Chef - Search the recipe you want to change"), WindowMatchers.isShowing());
+    }
+
+        @Test
     void testLogout(FxRobot robot) {
         robot.clickOn("#logout_button");
 
