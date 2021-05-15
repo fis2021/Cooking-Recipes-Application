@@ -15,8 +15,7 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.matcher.base.WindowMatchers;
-import org.tnh.exceptions.RecipeAlreadyExistsException;
-import org.tnh.exceptions.UncompletedFieldsException;
+import org.tnh.exceptions.*;
 import org.tnh.model.LoggedUser;
 import org.tnh.model.User;
 import org.tnh.services.FileSystemService;
@@ -35,6 +34,11 @@ class HeadChefPageTest {
     private final String CALORIES = "300";
     private final String TIME = "55";
     private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
+    private final String FIRST_NAME = "Marius";
+    private final String LAST_NAME = "Ardeen";
+    private final String EMAIL = "marius@yahoo.com";
+    private final String PASSWORD = "Marius";
+    private final String ROLE = "Head Chef";
 
     @BeforeAll
     static void beforeAll() {
@@ -47,11 +51,6 @@ class HeadChefPageTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
-        String FIRST_NAME = "Marius";
-        String LAST_NAME = "Ardeen";
-        String EMAIL = "marius@yahoo.com";
-        String PASSWORD = "Marius";
-        String ROLE = "Head Chef";
         LoggedUser.setLoggedUser(new User(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, ROLE));
     }
 
@@ -141,11 +140,22 @@ class HeadChefPageTest {
         @Test
     void testLogout(FxRobot robot) {
         robot.clickOn("#logout_button");
-
         FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
-
-        robot.clickOn("Yes");
-
+        robot.clickOn("#Yes_logout");
         FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
+    }
+
+    @Test
+    void testDeleteAccount(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
+        assertThat(UserService.getAllUsers()).isEmpty();
+        UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, PASSWORD, ROLE);
+        assertThat(UserService.getAllUsers()).size().isEqualTo(1);
+
+        robot.clickOn("#delete_button");
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+        robot.clickOn("#Yes_delete");
+        FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
+
+        assertThat(UserService.getAllUsers()).isEmpty();
     }
 }

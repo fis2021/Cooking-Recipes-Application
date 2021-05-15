@@ -34,6 +34,11 @@ class JuniorChefPageTest {
     private final String CALORIES = "300";
     private final String TIME = "55";
     private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
+    private final String FIRST_NAME = "Edward";
+    private final String LAST_NAME = "Rosco";
+    private final String EMAIL = "edward@yahoo.com";
+    private final String PASSWORD = "Edw@rd62";
+    private final String ROLE = "Junior Chef";
 
     @BeforeAll
     static void beforeAll() {
@@ -46,11 +51,6 @@ class JuniorChefPageTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
-        String FIRST_NAME = "Edward";
-        String LAST_NAME = "Rosco";
-        String EMAIL = "edward@yahoo.com";
-        String PASSWORD = "Edw@rd62";
-        String ROLE = "Junior Chef";
         LoggedUser.setLoggedUser(new User(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, ROLE));
     }
 
@@ -135,12 +135,23 @@ class JuniorChefPageTest {
     @Test
     void testLogout(FxRobot robot) {
         robot.clickOn("#logout_button");
-
         FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
-
-        robot.clickOn("Yes");
-
+        robot.clickOn("#Yes_logout");
         FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
+    }
+
+    @Test
+    void testDeleteAccount(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
+        assertThat(UserService.getAllUsers()).isEmpty();
+        UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, PASSWORD, ROLE);
+        assertThat(UserService.getAllUsers()).size().isEqualTo(1);
+
+        robot.clickOn("#delete_button");
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+        robot.clickOn("#Yes_delete");
+        FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
+
+        assertThat(UserService.getAllUsers()).isEmpty();
     }
 
 }
