@@ -2,6 +2,7 @@ package org.tnh.services;
 
 import org.apache.commons.io.FileUtils;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -145,6 +146,7 @@ class RecipeServiceTest {
         RecipeService.addRecipe(USERNAME, NAME + 1, CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
         ArrayList<Recipe> recipes = RecipeService.populateData();
+        assert recipes != null;
         assertThat(recipes.get(0).getName()).isEqualTo(NAME);
         assertThat(recipes.get(1).getName()).isEqualTo(NAME + 1);
         assertThat(recipes.get(2).getName()).isEqualTo(NAME + 2);
@@ -156,6 +158,7 @@ class RecipeServiceTest {
         RecipeService.addRecipe(USERNAME, "Pork", CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
         ArrayList<Recipe> recipes = RecipeService.populateDataSearch(NAME);
+        assert recipes != null;
         assertThat(recipes.size()).isEqualTo(2);
         assertThat(recipes.get(0).getName()).isEqualTo(NAME);
         assertThat(recipes.get(1).getName()).isEqualTo(NAME + 2);
@@ -167,6 +170,7 @@ class RecipeServiceTest {
         RecipeService.addRecipe(USERNAME + 1, NAME + 1, CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
         ArrayList<Recipe> recipes = RecipeService.populateDataCreatedRecipesList(USERNAME);
+        assert recipes != null;
         assertThat(recipes.size()).isEqualTo(2);
         assertThat(recipes.get(0).getName()).isEqualTo(NAME);
         assertThat(recipes.get(1).getName()).isEqualTo(NAME + 2);
@@ -182,6 +186,7 @@ class RecipeServiceTest {
         RecipeService.addAdmirer(NAME + 2, USERNAME + 2);
 
         ArrayList<Recipe> recipes = RecipeService.populateSavedRecipesList(USERNAME + 2);
+        assert recipes != null;
         assertThat(recipes.size()).isEqualTo(2);
         assertThat(recipes.get(0).getName()).isEqualTo(NAME);
         assertThat(recipes.get(1).getName()).isEqualTo(NAME + 2);
@@ -192,6 +197,7 @@ class RecipeServiceTest {
         RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addAdmirer(NAME, USERNAME + 2);
         ArrayList<Recipe> recipes = RecipeService.populateData();
+        assert recipes != null;
         Recipe recipe = recipes.get(0);
         String admirer = recipe.getAdmirers().get(0);
         assertThat(admirer).isEqualTo(USERNAME + 2);
@@ -202,6 +208,7 @@ class RecipeServiceTest {
         RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addRating(NAME, "5", USERNAME + 2);
         ArrayList<Recipe> recipes = RecipeService.populateData();
+        assert recipes != null;
         Recipe recipe = recipes.get(0);
         String rater = recipe.getRaters().get(0);
         assertThat(rater).isEqualTo(USERNAME + 2);
@@ -209,13 +216,32 @@ class RecipeServiceTest {
 
         assertThrows(RecipeAlreadyRatedException.class, () ->
                 RecipeService.addRating(NAME, "7", USERNAME + 2));
+        assertThrows(YouCantRateYourRecipeException.class, () ->
+                RecipeService.addRating(NAME, "7", USERNAME));
     }
 
+    @Test
+    void testRecipesAreDeletedSuccessfully() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        assertThat(RecipeService.getAllRecipes()).isNotEmpty();
+        RecipeService.deleteRecipe(NAME);
+        assertThat(RecipeService.getAllRecipes()).isEmpty();
+    }
 
+    @Test
+    void testChefsRecipeIsFoundSuccessfully() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        Assertions.assertThat(RecipeService.recipeFound(NAME, USERNAME)).isEqualTo(true);
+        Assertions.assertThat(RecipeService.recipeFound(NAME + 1, USERNAME)).isEqualTo(false);
+        Assertions.assertThat(RecipeService.recipeFound(NAME, USERNAME + 1)).isEqualTo(false);
+    }
 
-
-
-
-
+    @Test
+    void testRecipesCanBeModifiedSuccessfully() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.modifyRecipe(NAME, CALORIES + 1, TIME, INSTRUCTIONS, NAME);
+        Recipe recipe = RecipeService.getAllRecipes().get(0);
+        assertThat(recipe.getCalories()).isEqualTo(CALORIES + 1);
+    }
 
 }

@@ -196,7 +196,8 @@ public class RecipeService {
         }
     }
 
-    public static void addRating(String recipe_name, String score, String username) throws RecipeAlreadyRatedException, YouCantRateYourRecipeException{
+    public static void addRating(String recipe_name, String score, String username) throws RecipeAlreadyRatedException, YouCantRateYourRecipeException
+    {
         for (Recipe recipe : recipeRepository.find()) {
             if (recipe_name.equals(recipe.getName())) {
                 if(username.equals(recipe.getUsername())) throw new YouCantRateYourRecipeException();
