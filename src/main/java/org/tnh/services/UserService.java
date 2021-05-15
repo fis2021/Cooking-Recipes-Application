@@ -1,6 +1,7 @@
 package org.tnh.services;
 
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.tnh.exceptions.*;
 import org.tnh.model.User;
@@ -10,6 +11,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 import static org.tnh.services.FileSystemService.getPathToFile;
@@ -33,14 +35,30 @@ public class UserService {
     }
 
     public static void addUser(String firstName, String lastName, String email,String username, String password, String confirmPassword, String role)
-            throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException, FirstNameIsNotUniqueException
+            throws UsernameAlreadyExistsException, UncompletedFieldsException, PasswordNoUpperCaseException, ConfirmPasswordAndPasswordNotEqualException
     {
         uncompletedFields(firstName, lastName, email,username, password, confirmPassword, role);
         checkUserDoesNotAlreadyExist(username);
-        checkFirstNameIsNotUnique(firstName);
+
         passwordNoUpperCase(password);
         passwordNotEqualConfirmPassword(password, confirmPassword);
-        userRepository.insert(new User(firstName, lastName, email, username, encodePassword(username, password), role));
+        User user = new User(firstName, lastName, email, username, password, role);
+        UUID uu = user.getUser_id();
+        while (!checkIDisUnique(uu)) {
+            uu = user.rand_UUID();
+            checkIDisUnique(uu);
+        }
+        userRepository.insert(user);
+    }
+
+    public static boolean checkIDisUnique(UUID u) {
+        Cursor<User> cursor = userRepository.find();
+        for (User user : cursor) {
+            if (u.equals(user.getUser_id())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static List<User> getAllUsers() {
@@ -51,13 +69,6 @@ public class UserService {
         for (User user : userRepository.find()) {
             if (Objects.equals(username, user.getUsername()))
                 throw new UsernameAlreadyExistsException(username);
-        }
-    }
-
-    private static void checkFirstNameIsNotUnique(String firstName) throws FirstNameIsNotUniqueException {
-        for (User user : userRepository.find()) {
-            if (Objects.equals(firstName, user.getFirstName()))
-                throw new FirstNameIsNotUniqueException();
         }
     }
 

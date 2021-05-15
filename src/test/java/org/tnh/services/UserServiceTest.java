@@ -47,7 +47,7 @@ class UserServiceTest {
     }
 
     @Test
-    void testUserIsAddedToDatabase() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, FirstNameIsNotUniqueException {
+    void testUserIsAddedToDatabase() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException{
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         assertThat(UserService.getAllUsers()).isNotEmpty();
         assertThat(UserService.getAllUsers()).size().isEqualTo(1);
@@ -59,14 +59,6 @@ class UserServiceTest {
         assertThat(user.getUsername()).isEqualTo(USERNAME);
         assertThat(user.getPassword()).isEqualTo(UserService.encodePassword(USERNAME, PASSWORD));
         assertThat(user.getRole()).isEqualTo(ROLE);
-    }
-
-    @Test
-    void testUserWithSameNameCanNotBeAddedTwice() {
-        assertThrows(FirstNameIsNotUniqueException.class, () -> {
-            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
-            UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
-        });
     }
 
     @Test
@@ -110,7 +102,7 @@ class UserServiceTest {
     }
 
     @Test
-    void testLoggedUserMethod() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, InvalidPasswordException, InvalidUsernameException, FirstNameIsNotUniqueException {
+    void testLoggedUserMethod() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, InvalidPasswordException, InvalidUsernameException {
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         assertThrows(InvalidUsernameException.class, () ->
                 UserService.loggedUser(USERNAME + 1, PASSWORD));
@@ -130,13 +122,13 @@ class UserServiceTest {
     }
 
     @Test
-    void testGetUserRole() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, FirstNameIsNotUniqueException {
+    void testGetUserRole() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         assertThat(UserService.getUserRole(USERNAME)).isEqualTo(ROLE);
     }
 
     @Test
-    void testEncoding() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, FirstNameIsNotUniqueException {
+    void testEncoding() throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, CONFIRM_PASSWORD, ROLE);
         User user = UserService.getAllUsers().get(0);
         assertThat(UserService.encodePassword(USERNAME, PASSWORD)).isEqualTo(user.getPassword());

@@ -45,7 +45,7 @@ public class RegistrationController {
         try {
             UserService.addUser(firstName.getText(), lastName.getText(), email.getText(), username.getText(), password.getText(), confirmPassword.getText(), role.getValue());
             registrationMessage.setText("Account created successfully!");
-        } catch(UncompletedFieldsException | UsernameAlreadyExistsException | PasswordNoUpperCaseException | ConfirmPasswordAndPasswordNotEqualException | FirstNameIsNotUniqueException e) {
+        } catch(UncompletedFieldsException | UsernameAlreadyExistsException | PasswordNoUpperCaseException | ConfirmPasswordAndPasswordNotEqualException e) {
             registrationMessage.setText(e.getMessage());
         }
     }

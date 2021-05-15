@@ -28,12 +28,12 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class RegistrationTest {
 
-    private final String FIRST_NAME = "Nico";
-    private final String LAST_NAME = "Ardeen";
-    private final String EMAIL = "nicu@yahoo.com";
-    private final String USERNAME = "Nico";
-    private final String PASSWORD = "Nico";
-    private final String CONFIRM_PASSWORD = "Nico";
+    private final String FIRST_NAME = "Marius";
+    private final String LAST_NAME = "Ardelean";
+    private final String EMAIL = "marius@yahoo.com";
+    private final String USERNAME = "Marius";
+    private final String PASSWORD = "Marius";
+    private final String CONFIRM_PASSWORD = "Marius";
 
     @BeforeAll
     static void beforeAll() {
@@ -91,13 +91,6 @@ class RegistrationTest {
         robot.clickOn("#username");
         robot.eraseText(USERNAME.length());
         robot.write(USERNAME + "1");
-
-        robot.clickOn("#register_button");
-        assertThat(robot.lookup("#registrationMessage").queryText()).hasText("First name is not unique!");
-
-        robot.clickOn("#firstName");
-        robot.eraseText(FIRST_NAME.length());
-        robot.write(FIRST_NAME + "1");
 
         robot.clickOn("#password");
         robot.eraseText(PASSWORD.length());

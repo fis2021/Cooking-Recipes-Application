@@ -1,8 +1,14 @@
 package org.tnh.model;
 
+import org.dizitart.no2.objects.Id;
+
+import java.util.UUID;
+
 @SuppressWarnings("unused")
 public class User {
 
+    @Id
+    private UUID user_id;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,6 +17,17 @@ public class User {
     private String role;
 
     public User(String firstName, String lastName, String email, String username, String password, String role) {
+        this.user_id = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(UUID user_id, String firstName, String lastName, String email, String username, String password, String role) {
+        this.user_id = user_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -20,6 +37,15 @@ public class User {
     }
 
     public User() {
+    }
+
+    public User copyData() {
+        return new User(user_id, firstName, lastName, email, username, password, role);
+    }
+
+    public UUID rand_UUID() {
+        this.user_id = UUID.randomUUID();
+        return this.user_id;
     }
 
     @Override
@@ -41,6 +67,14 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    public UUID getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(UUID user_id) {
+        this.user_id = user_id;
     }
 
     public String getFirstName() {

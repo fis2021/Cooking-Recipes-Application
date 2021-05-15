@@ -72,7 +72,7 @@ class StartupPageTest {
     }
 
     @Test
-    void testLogin(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException, FirstNameIsNotUniqueException {
+    void testLogin(FxRobot robot) throws ConfirmPasswordAndPasswordNotEqualException, UsernameAlreadyExistsException, PasswordNoUpperCaseException, UncompletedFieldsException {
         robot.clickOn("#login_button");
         assertThat(robot.lookup("#loginMessage").queryText()).hasText("Complete all fields!");
 
