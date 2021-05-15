@@ -20,7 +20,7 @@ public class SearchHeadChefController extends AbstractTableViewController {
     }
 
     public void setTable() {
-        initVars(recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating);
+        initVars();
         ObservableList<Recipe> recipes_obs = FXCollections.observableArrayList();
         recipes_obs.addAll(Objects.requireNonNull(RecipeService.populateDataSearch(HeadChefController.getSearchValue())));
         recipesTableView.setItems(recipes_obs);

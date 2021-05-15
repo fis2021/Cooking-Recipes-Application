@@ -11,7 +11,7 @@ public abstract class AbstractTableViewController extends AbstractWindowViewCont
     @FXML
     protected TableColumn<Recipe, String> recipeName, recipeCalories, recipeTime, recipeInstructions, recipeRating;
 
-    protected void initVars(TableColumn<Recipe, String> recipeName, TableColumn<Recipe, String> recipeCalories, TableColumn<Recipe, String> recipeTime, TableColumn<Recipe, String> recipeInstructions, TableColumn<Recipe, String> recipeRating) {
+    protected void initVars() {
         recipeName.setCellValueFactory(new PropertyValueFactory<>("name"));
         recipeCalories.setCellValueFactory(new PropertyValueFactory<>("calories"));
         recipeTime.setCellValueFactory(new PropertyValueFactory<>("time"));
