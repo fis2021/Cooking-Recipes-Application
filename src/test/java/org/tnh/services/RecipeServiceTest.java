@@ -19,10 +19,12 @@ class RecipeServiceTest {
     private final String CALORIES = "300";
     private final String TIME = "55";
     private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
+    private final String GRADE = "5";
 
     @BeforeEach
     void setUp() throws Exception {
         FileSystemService.APPLICATION_FOLDER = ".test-cooking-recipes";
+        FileSystemService.initDirectory();
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         RecipeService.initDatabase();
     }
@@ -82,10 +84,44 @@ class RecipeServiceTest {
     }
 
     @Test
-    void testRecipesCanBeFound() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+    void testSimilarRecipesCanBeFound() throws RecipeAlreadyExistsException, UncompletedFieldsException {
         RecipeService.addRecipe(USERNAME, "Chicken", CALORIES, TIME, INSTRUCTIONS);
         assertThrows(CouldNotFindRecipeException.class, () ->
                 RecipeService.couldNotFindSimilarRecipeNames("Pork"));
+    }
+
+    @Test
+    void testExactRecipesCanBeFound() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, "Chicken", CALORIES, TIME, INSTRUCTIONS);
+        assertThrows(CouldNotFindRecipeException.class, () ->
+                RecipeService.couldNotFindThisExactRecipeName("Pork"));
+    }
+
+    @Test
+    void testRecipesDatabaseIsEmpty() {
+        assertThrows(EmptyDataBaseException.class, RecipeService::emptyDataBase);
+    }
+
+    @Test
+    void testSavedRecipesDatabaseIsEmpty() {
+        assertThrows(EmptyDataBaseException.class, () ->
+                RecipeService.emptySavedDataBase(USERNAME));
+    }
+
+    @Test
+    void testCreatedRecipesDatabaseIsEmpty() {
+        assertThrows(EmptyDataBaseException.class, () ->
+                RecipeService.emptyCreatedRecipesDataBase(USERNAME));
+    }
+
+    @Test
+    void testRatingFieldIsCompleted() {
+        assertThrows(UncompletedFieldsException.class, () ->
+                RecipeService.emptyRatingFields(NAME, ""));
+        assertThrows(UncompletedFieldsException.class, () ->
+                RecipeService.emptyRatingFields("", GRADE));
+        assertThrows(UncompletedFieldsException.class, () ->
+                RecipeService.emptyRatingFields("", ""));
     }
 
 }
