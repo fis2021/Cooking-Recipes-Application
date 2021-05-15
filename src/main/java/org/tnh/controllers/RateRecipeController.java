@@ -24,7 +24,7 @@ public class RateRecipeController extends AbstractWindowViewController {
             RecipeService.emptyRatingFields(recipe.getText(), rating.getText());
             RecipeService.couldNotFindThisExactRecipeName(recipe.getText());
             RecipeService.invalidGrade(rating.getText());
-            RecipeService.addRating(recipe.getText(), rating.getText(), LoggedUser.getLoggedUser().getUsername(), LoggedUser.getLoggedUser().getUsername());
+            RecipeService.addRating(recipe.getText(), rating.getText(), LoggedUser.getLoggedUser().getUsername());
             recipeMessage.setText("Recipe graded successfully!");
         } catch(RecipeAlreadyRatedException | CouldNotFindRecipeException | UncompletedFieldsException | InvalidGradeException e){
             recipeMessage.setText(e.getMessage());

@@ -153,12 +153,69 @@ class RecipeServiceTest {
     @Test
     void testCreatedArrayContainsAllTheRecipesInsideTheDatabaseThatContainSearchedString() throws RecipeAlreadyExistsException, UncompletedFieldsException {
         RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
-        RecipeService.addRecipe(USERNAME, "", CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, "Pork", CALORIES, TIME, INSTRUCTIONS);
         RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
         ArrayList<Recipe> recipes = RecipeService.populateDataSearch(NAME);
+        assertThat(recipes.size()).isEqualTo(2);
         assertThat(recipes.get(0).getName()).isEqualTo(NAME);
-        assertThat(recipes.get(1).getName()).isEqualTo(NAME + 1);
-        assertThat(recipes.get(2).getName()).isEqualTo(NAME + 2);
+        assertThat(recipes.get(1).getName()).isEqualTo(NAME + 2);
     }
+
+    @Test
+    void testCreatedArrayContainsAllTheRecipesInsideTheDatabaseThatWereCreatedByGivenChef() throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME + 1, NAME + 1, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
+        ArrayList<Recipe> recipes = RecipeService.populateDataCreatedRecipesList(USERNAME);
+        assertThat(recipes.size()).isEqualTo(2);
+        assertThat(recipes.get(0).getName()).isEqualTo(NAME);
+        assertThat(recipes.get(1).getName()).isEqualTo(NAME + 2);
+    }
+
+    @Test
+    void testCreatedArrayContainsAllTheRecipesInsideTheDatabaseThatWereSavedByGivenChef() throws RecipeAlreadyExistsException, UncompletedFieldsException, RecipeAlreadySavedException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, NAME + 1, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRecipe(USERNAME, NAME + 2, CALORIES, TIME, INSTRUCTIONS);
+
+        RecipeService.addAdmirer(NAME, USERNAME + 2);
+        RecipeService.addAdmirer(NAME + 2, USERNAME + 2);
+
+        ArrayList<Recipe> recipes = RecipeService.populateSavedRecipesList(USERNAME + 2);
+        assertThat(recipes.size()).isEqualTo(2);
+        assertThat(recipes.get(0).getName()).isEqualTo(NAME);
+        assertThat(recipes.get(1).getName()).isEqualTo(NAME + 2);
+    }
+
+    @Test
+    void testAdmirersAreSaved() throws RecipeAlreadyExistsException, UncompletedFieldsException, RecipeAlreadySavedException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addAdmirer(NAME, USERNAME + 2);
+        ArrayList<Recipe> recipes = RecipeService.populateData();
+        Recipe recipe = recipes.get(0);
+        String admirer = recipe.getAdmirers().get(0);
+        assertThat(admirer).isEqualTo(USERNAME + 2);
+    }
+
+    @Test
+    void testRatingsAreGivenCorrectly() throws RecipeAlreadyExistsException, UncompletedFieldsException, RecipeAlreadyRatedException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addRating(NAME, "5", USERNAME + 2);
+        ArrayList<Recipe> recipes = RecipeService.populateData();
+        Recipe recipe = recipes.get(0);
+        String rater = recipe.getRaters().get(0);
+        assertThat(rater).isEqualTo(USERNAME + 2);
+        assertThat(recipe.getRating()).isEqualTo("5.0");
+
+        assertThrows(RecipeAlreadyRatedException.class, () ->
+                RecipeService.addRating(NAME, "7", USERNAME + 2));
+    }
+
+
+
+
+
+
+
 
 }
