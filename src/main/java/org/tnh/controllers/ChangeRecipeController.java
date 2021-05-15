@@ -10,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.tnh.services.RecipeService;
 
@@ -19,8 +18,9 @@ import java.util.Objects;
 
 public class ChangeRecipeController {
 
-    @FXML
-    private Text recipeMessage;
+    private Parent root;
+    private Stage stage;
+
     @FXML
     private TextField name, calories, time, instructions;
 
@@ -30,15 +30,19 @@ public class ChangeRecipeController {
         alert.showAndWait();
         if(alert.getResult().getText().equals("Yes")) {
             RecipeService.modifyRecipe(name.getText(), calories.getText(), time.getText(), instructions.getText(), SearchRecipeToChangeController.getSearchValue());
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Head Chef - Search the recipe you want to change");
-            stage.setScene(new Scene(root, 1280, 720));
-            stage.show();
-            Alert alert2 = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK);
+            Alert alert2 = setRoot(event);
             alert2.setHeaderText("The recipe has been modified");
             alert2.showAndWait();
         }
+    }
+
+    private Alert setRoot(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Head Chef - Search the recipe you want to change");
+        stage.setScene(new Scene(root, 1280, 720));
+        stage.show();
+        return new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK);
     }
 
     public void handleDeleteAction(ActionEvent event) throws IOException {
@@ -47,20 +51,15 @@ public class ChangeRecipeController {
         alert.showAndWait();
             if(alert.getResult().getText().equals("Yes")) {
                 RecipeService.deleteRecipe(SearchRecipeToChangeController.getSearchValue());
-                Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("Head Chef - Search the recipe you want to change");
-                stage.setScene(new Scene(root, 1280, 720));
-                stage.show();
-                Alert alert2 = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK);
+                Alert alert2 = setRoot(event);
                 alert2.setHeaderText("The recipe has been deleted!");
                 alert2.showAndWait();
             }
     }
 
     public void handleBackAction(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search_recipe_to_change.fxml")));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Head Chef - Search the recipe you want to change");
         stage.setScene(new Scene(root, 1280, 720));
         stage.show();

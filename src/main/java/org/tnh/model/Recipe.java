@@ -1,7 +1,6 @@
 package org.tnh.model;
 
 import org.dizitart.no2.objects.Id;
-import org.tnh.exceptions.RecipeAlreadyExistsException;
 import org.tnh.exceptions.RecipeAlreadyRatedException;
 import org.tnh.exceptions.RecipeAlreadySavedException;
 
@@ -101,10 +100,6 @@ public class Recipe {
         return recipe_id;
     }
 
-    public void setRecipe_id(UUID recipe_id) {
-        this.recipe_id = recipe_id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -149,27 +144,11 @@ public class Recipe {
         this.rating = rating;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public ArrayList<String> getRaters() {
         return raters;
     }
 
-    public void setRaters(ArrayList<String> raters) {
-        this.raters = raters;
-    }
-
     public ArrayList<String> getAdmirers() {
         return admirers;
-    }
-
-    public void setAdmirers(ArrayList<String> admirers) {
-        this.admirers = admirers;
     }
 }

@@ -38,7 +38,7 @@
             <Font size="14.0" />
          </font></Text>
 
-        <Button fx:id="logout_button" alignment="BOTTOM_LEFT" onAction="#handleLogout" text="Logout" GridPane.columnIndex="0" GridPane.rowIndex="40" />
+        <Button fx:id="logout_button" alignment="BOTTOM_LEFT" onAction="#handleLogoutAction" text="Logout" GridPane.columnIndex="0" GridPane.rowIndex="40" />
 
       <columnConstraints>
          <ColumnConstraints />
