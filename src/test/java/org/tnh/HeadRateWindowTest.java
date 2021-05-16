@@ -31,11 +31,11 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class HeadRateWindowTest {
 
-    private final String FIRST_NAME = "Edward";
-    private final String LAST_NAME = "Rosco";
-    private final String EMAIL = "edward@yahoo.com";
-    private final String USERNAME = "Edward26";
-    private final String PASSWORD = "Edw@rd62";
+    private final String FIRST_NAME = "Marius";
+    private final String LAST_NAME = "Ardeen";
+    private final String EMAIL = "marius@yahoo.com";
+    private final String USERNAME = "Marius";
+    private final String PASSWORD = "Marius";
     private final String ROLE = "Head Chef";
 
     private final String RECIPE_NAME = "Chicken";
@@ -147,6 +147,38 @@ class HeadRateWindowTest {
         robot.write("5");
         robot.clickOn("#enter_button");
         assertThat(robot.lookup("#recipeMessage").queryText()).hasText("You can't rate your own recipe!");
+    }
+
+    @Test
+    void testRecipeNotFound(FxRobot robot) throws UncompletedFieldsException, RecipeAlreadyExistsException {
+        robot.clickOn("#recipe");
+        robot.write(RECIPE_NAME);
+        robot.clickOn("#rating");
+        robot.write("5");
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Could not find recipes!");
+
+        RecipeService.addRecipe(USERNAME + "1", RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Recipe graded successfully!");
+    }
+
+    @Test
+    void testInvalidGrade(FxRobot robot) throws UncompletedFieldsException, RecipeAlreadyExistsException {
+        RecipeService.addRecipe(USERNAME + "1", RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+        robot.clickOn("#recipe");
+        robot.write(RECIPE_NAME);
+        robot.clickOn("#rating");
+        robot.write("55");
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("You can only introduce grades from 1 to 10!");
+
+        robot.clickOn("#rating");
+        robot.eraseText(2);
+        robot.write("5");
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Recipe graded successfully!");
     }
 
 }

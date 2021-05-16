@@ -139,14 +139,34 @@ class JuniorRateWindowTest {
     }
 
     @Test
-    void testUserCantRateHisOwnRecipe(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
-        RecipeService.addRecipe(USERNAME, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+    void testInvalidGrade(FxRobot robot) throws UncompletedFieldsException, RecipeAlreadyExistsException {
+        RecipeService.addRecipe(USERNAME + "1", RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+        robot.clickOn("#recipe");
+        robot.write(RECIPE_NAME);
+        robot.clickOn("#rating");
+        robot.write("55");
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("You can only introduce grades from 1 to 10!");
+
+        robot.clickOn("#rating");
+        robot.eraseText(2);
+        robot.write("5");
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Recipe graded successfully!");
+    }
+
+    @Test
+    void testRecipeNotFound(FxRobot robot) throws UncompletedFieldsException, RecipeAlreadyExistsException {
         robot.clickOn("#recipe");
         robot.write(RECIPE_NAME);
         robot.clickOn("#rating");
         robot.write("5");
         robot.clickOn("#enter_button");
-        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("You can't rate your own recipe!");
-    }
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Could not find recipes!");
 
+        RecipeService.addRecipe(USERNAME + "1", RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Recipe graded successfully!");
+    }
 }
