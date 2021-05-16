@@ -26,6 +26,13 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class RegistrationTest {
 
+    private final String FIRST_NAME = "Marius";
+    private final String LAST_NAME = "Ardeen";
+    private final String EMAIL = "marius@yahoo.com";
+    private final String USERNAME = "Marius";
+    private final String PASSWORD = "Marius";
+    private final String CONFIRM_PASSWORD = "Marius";
+
     @BeforeAll
     static void beforeAll() {
         FileSystemService.APPLICATION_FOLDER = ".test-cooking-recipes";
@@ -59,22 +66,21 @@ class RegistrationTest {
         assertThat(robot.lookup("#registrationMessage").queryText()).hasText("Complete all fields!");
 
         robot.clickOn("#firstName");
-        String FIRST_NAME = "Marius";
         robot.write(FIRST_NAME);
         robot.clickOn("#lastName");
-        String LAST_NAME = "Ardeen";
+
         robot.write(LAST_NAME);
         robot.clickOn("#email");
-        String EMAIL = "marius@yahoo.com";
+
         robot.write(EMAIL);
         robot.clickOn("#username");
-        String USERNAME = "Marius";
+
         robot.write(USERNAME);
         robot.clickOn("#password");
-        String PASSWORD = "Marius";
+
         robot.write(PASSWORD);
         robot.clickOn("#confirmPassword");
-        String CONFIRM_PASSWORD = "Marius";
+
         robot.write(CONFIRM_PASSWORD);
         robot.clickOn("#role");
         robot.type(KeyCode.DOWN);

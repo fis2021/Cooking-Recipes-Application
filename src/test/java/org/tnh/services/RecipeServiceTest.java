@@ -244,4 +244,10 @@ class RecipeServiceTest {
         assertThat(recipe.getCalories()).isEqualTo(CALORIES + 1);
     }
 
+    @Test
+    void testThatYouOwnTheRecipeYouWantToModify() throws UncompletedFieldsException, RecipeAlreadyExistsException {
+        RecipeService.addRecipe(USERNAME + 1, NAME, CALORIES, TIME, INSTRUCTIONS);
+        assertThrows(YouCantModifyThisRecipe.class, () ->
+                RecipeService.ownedRecipeFound(NAME, USERNAME));
+    }
 }

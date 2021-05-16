@@ -258,4 +258,16 @@ public class RecipeService {
         return false;
     }
 
+    public static void ownedRecipeFound(String name, String username) throws YouCantModifyThisRecipe {
+        boolean ok = false;
+        for(Recipe recipe : recipeRepository.find())
+        {
+            if(name.equals(recipe.getName()) && username.equals(recipe.getUsername()))
+                ok = true;
+        }
+
+        if(!ok)
+            throw new YouCantModifyThisRecipe();
+    }
+
 }
