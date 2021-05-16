@@ -29,18 +29,6 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 @ExtendWith(ApplicationExtension.class)
 class RecipeCreationPageTest {
 
-    private final String FIRST_NAME = "Marius";
-    private final String LAST_NAME = "Ardeen";
-    private final String EMAIL = "marius@yahoo.com";
-    private final String USERNAME = "Marius";
-    private final String PASSWORD = "Marius";
-    private final String ROLE = "Head Chef";
-
-    private final String RECIPE_NAME = "Chicken";
-    private final String CALORIES = "300";
-    private final String TIME = "55";
-    private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
-
     @BeforeAll
     static void beforeAll() {
         FileSystemService.APPLICATION_FOLDER = ".test-cooking-recipes";
@@ -52,6 +40,12 @@ class RecipeCreationPageTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
+        String FIRST_NAME = "Marius";
+        String LAST_NAME = "Ardeen";
+        String EMAIL = "marius@yahoo.com";
+        String USERNAME = "Marius";
+        String PASSWORD = "Marius";
+        String ROLE = "Head Chef";
         LoggedUser.setLoggedUser(new User(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, ROLE));
     }
 
@@ -83,15 +77,19 @@ class RecipeCreationPageTest {
         assertThat(robot.lookup("#recipeMessage").queryText()).hasText("Complete all fields!");
 
         robot.clickOn("#name");
+        String RECIPE_NAME = "Chicken";
         robot.write(RECIPE_NAME);
 
         robot.clickOn("#calories");
+        String CALORIES = "300";
         robot.write(CALORIES);
 
         robot.clickOn("#time");
+        String TIME = "55";
         robot.write(TIME);
 
         robot.clickOn("#instructions");
+        String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
         robot.write(INSTRUCTIONS);
 
         robot.clickOn("#register_button");

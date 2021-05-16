@@ -32,7 +32,6 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 class SaveRecipeWindowTest {
 
     private final String USERNAME = "Edward26";
-
     private final String RECIPE_NAME = "Chicken";
     private final String CALORIES = "300";
     private final String TIME = "55";

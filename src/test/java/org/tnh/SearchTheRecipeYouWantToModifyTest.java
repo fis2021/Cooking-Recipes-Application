@@ -30,16 +30,6 @@ import static org.testfx.assertions.api.Assertions.assertThat;
 class SearchTheRecipeYouWantToModifyTest {
 
     private final String USERNAME = "Marius";
-    private final String FIRST_NAME = "Marius";
-    private final String LAST_NAME = "Ardeen";
-    private final String EMAIL = "marius@yahoo.com";
-    private final String PASSWORD = "Marius";
-    private final String ROLE = "Head Chef";
-
-    private final String RECIPE_NAME = "Chicken";
-    private final String CALORIES = "300";
-    private final String TIME = "55";
-    private final String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
 
     @BeforeAll
     static void beforeAll() {
@@ -52,6 +42,11 @@ class SearchTheRecipeYouWantToModifyTest {
         FileUtils.cleanDirectory(FileSystemService.getApplicationHomeFolder().toFile());
         UserService.initDatabase();
         RecipeService.initDatabase();
+        String FIRST_NAME = "Marius";
+        String LAST_NAME = "Ardeen";
+        String EMAIL = "marius@yahoo.com";
+        String PASSWORD = "Marius";
+        String ROLE = "Head Chef";
         LoggedUser.setLoggedUser(new User(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, ROLE));
     }
 
@@ -77,11 +72,15 @@ class SearchTheRecipeYouWantToModifyTest {
         assertThat(robot.lookup("#searchMessage").queryText()).hasText("Complete all fields!");
 
         robot.clickOn("#search_recipe");
+        String RECIPE_NAME = "Chicken";
         robot.write(RECIPE_NAME);
 
         robot.clickOn("#enter_button");
         assertThat(robot.lookup("#searchMessage").queryText()).hasText("Could not find recipes!");
 
+        String CALORIES = "300";
+        String TIME = "55";
+        String INSTRUCTIONS = "https://www.ambitiouskitchen.com/the-best-chicken-soup-recipe/";
         RecipeService.addRecipe(USERNAME + 1, RECIPE_NAME + 1, CALORIES, TIME, INSTRUCTIONS);
 
         robot.clickOn("#search_recipe");
