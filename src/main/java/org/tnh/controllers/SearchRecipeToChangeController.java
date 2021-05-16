@@ -35,6 +35,8 @@ public class SearchRecipeToChangeController extends AbstractWindowViewController
         searchValue = search_recipe.getText();
     }
 
+    public static void setSearchValue (String value) { searchValue = value; }
+
     public void handleEnterAction(ActionEvent event) throws Exception {
         try {
             RecipeService.uncompletedNameField(search_recipe.getText());

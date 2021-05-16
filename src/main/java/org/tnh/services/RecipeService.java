@@ -56,7 +56,7 @@ public class RecipeService {
         return true;
     }
 
-    private static void checkRecipeDoesNotAlreadyExist(String name) throws RecipeAlreadyExistsException {
+    public static void checkRecipeDoesNotAlreadyExist(String name) throws RecipeAlreadyExistsException {
         for (Recipe recipe : recipeRepository.find()) {
             if (name.equals(recipe.getName())) {
                 throw new RecipeAlreadyExistsException(name);
@@ -260,14 +260,20 @@ public class RecipeService {
 
     public static void ownedRecipeFound(String name, String username) throws YouCantModifyThisRecipe {
         boolean ok = false;
-        for(Recipe recipe : recipeRepository.find())
-        {
-            if(name.equals(recipe.getName()) && username.equals(recipe.getUsername()))
+        for(Recipe recipe : recipeRepository.find()){
+            if(name.equals(recipe.getName()) && username.equals(recipe.getUsername())) {
                 ok = true;
+                break;
+            }
         }
 
         if(!ok)
             throw new YouCantModifyThisRecipe();
     }
 
+    public static void recipeNameAlreadyUsed(String name) throws RecipeAlreadyExistsException
+    {
+        for (Recipe recipe : recipeRepository.find())
+            if (name.equals(recipe.getName())) throw new RecipeAlreadyExistsException(name);
+    }
 }

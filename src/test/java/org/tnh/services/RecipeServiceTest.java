@@ -250,4 +250,11 @@ class RecipeServiceTest {
         assertThrows(YouCantModifyThisRecipe.class, () ->
                 RecipeService.ownedRecipeFound(NAME, USERNAME));
     }
+
+    @Test
+    void testRecipeNameAlreadyUsed() throws UncompletedFieldsException, RecipeAlreadyExistsException {
+        RecipeService.addRecipe(USERNAME, NAME, CALORIES, TIME, INSTRUCTIONS);
+        assertThrows(RecipeAlreadyExistsException.class, () ->
+                RecipeService.recipeNameAlreadyUsed(NAME));
+    }
 }
