@@ -96,6 +96,9 @@ class JuniorChefPageTest {
 
         robot.clickOn("#recipes_button");
         FxAssert.verifyThat(robot.window("Junior Chef - List of recipes"), WindowMatchers.isShowing());
+
+        robot.clickOn("#back_button");
+        FxAssert.verifyThat(robot.window("Junior Chef"), WindowMatchers.isShowing());
     }
 
     @Test
@@ -108,6 +111,9 @@ class JuniorChefPageTest {
 
         robot.clickOn("#saved_recipes_button");
         FxAssert.verifyThat(robot.window("Junior Chef - Saved recipes"), WindowMatchers.isShowing());
+
+        robot.clickOn("#back_button");
+        FxAssert.verifyThat(robot.window("Junior Chef"), WindowMatchers.isShowing());
     }
 
     @Test
@@ -136,6 +142,10 @@ class JuniorChefPageTest {
     void testLogout(FxRobot robot) {
         robot.clickOn("#logout_button");
         FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+        robot.clickOn("#No_logout");
+        FxAssert.verifyThat(robot.window("Junior Chef"), WindowMatchers.isShowing());
+        robot.clickOn("#logout_button");
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
         robot.clickOn("#Yes_logout");
         FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
     }
@@ -146,6 +156,10 @@ class JuniorChefPageTest {
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, PASSWORD, ROLE);
         assertThat(UserService.getAllUsers()).size().isEqualTo(1);
 
+        robot.clickOn("#delete_button");
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+        robot.clickOn("#No_delete");
+        FxAssert.verifyThat(robot.window("Junior Chef"), WindowMatchers.isShowing());
         robot.clickOn("#delete_button");
         FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
         robot.clickOn("#Yes_delete");

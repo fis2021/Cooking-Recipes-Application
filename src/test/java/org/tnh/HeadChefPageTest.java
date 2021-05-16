@@ -102,6 +102,9 @@ class HeadChefPageTest {
 
         robot.clickOn("#owned_recipes_button");
         FxAssert.verifyThat(robot.window("Head Chef - List of owned recipes"), WindowMatchers.isShowing());
+
+        robot.clickOn("#back_button");
+        FxAssert.verifyThat(robot.window("Head Chef"), WindowMatchers.isShowing());
     }
 
     @Test
@@ -113,6 +116,9 @@ class HeadChefPageTest {
 
         robot.clickOn("#recipes_button");
         FxAssert.verifyThat(robot.window("Head Chef - List of recipes"), WindowMatchers.isShowing());
+
+        robot.clickOn("#back_button");
+        FxAssert.verifyThat(robot.window("Head Chef"), WindowMatchers.isShowing());
     }
 
     @Test
@@ -141,6 +147,10 @@ class HeadChefPageTest {
     void testLogout(FxRobot robot) {
         robot.clickOn("#logout_button");
         FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+        robot.clickOn("#No_logout");
+        FxAssert.verifyThat(robot.window("Head Chef"), WindowMatchers.isShowing());
+        robot.clickOn("#logout_button");
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
         robot.clickOn("#Yes_logout");
         FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
     }
@@ -151,6 +161,10 @@ class HeadChefPageTest {
         UserService.addUser(FIRST_NAME, LAST_NAME, EMAIL, USERNAME, PASSWORD, PASSWORD, ROLE);
         assertThat(UserService.getAllUsers()).size().isEqualTo(1);
 
+        robot.clickOn("#delete_button");
+        FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
+        robot.clickOn("#No_delete");
+        FxAssert.verifyThat(robot.window("Head Chef"), WindowMatchers.isShowing());
         robot.clickOn("#delete_button");
         FxAssert.verifyThat(robot.window("Confirmation"), WindowMatchers.isShowing());
         robot.clickOn("#Yes_delete");

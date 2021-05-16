@@ -126,5 +126,8 @@ class StartupPageTest {
 
         robot.clickOn("#recipes_button");
         FxAssert.verifyThat(robot.window("List of recipes"), WindowMatchers.isShowing());
+
+        robot.clickOn("#back_button");
+        FxAssert.verifyThat(robot.window("Cooking-Recipes-Application"), WindowMatchers.isShowing());
     }
 }
