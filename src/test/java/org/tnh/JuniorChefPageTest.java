@@ -24,6 +24,7 @@ import org.tnh.services.UserService;
 
 import java.util.Objects;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.testfx.assertions.api.Assertions.assertThat;
 
 @ExtendWith(ApplicationExtension.class)

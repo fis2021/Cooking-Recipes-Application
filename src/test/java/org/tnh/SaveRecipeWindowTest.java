@@ -100,6 +100,17 @@ class SaveRecipeWindowTest {
     }
 
     @Test
+    void testCanOnlySaveOnce(FxRobot robot) throws RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME + 1, RECIPE_NAME, CALORIES, TIME, INSTRUCTIONS);
+        robot.clickOn("#search");
+        robot.write(RECIPE_NAME);
+        robot.clickOn("#enter_button");
+        robot.clickOn("#enter_button");
+        assertThat(robot.lookup("#searchMessage").queryText()).hasText("You already saved this recipe!");
+
+    }
+
+    @Test
     void testCanGoToPreviousPage(FxRobot robot) {
         robot.clickOn("#back_button");
         FxAssert.verifyThat(robot.window("Junior Chef"), WindowMatchers.isShowing());

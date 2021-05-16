@@ -92,6 +92,14 @@ class RecipeServiceTest {
     }
 
     @Test
+    void testRecipeAlreadySaved() throws RecipeAlreadySavedException, RecipeAlreadyExistsException, UncompletedFieldsException {
+        RecipeService.addRecipe(USERNAME + 1, NAME, CALORIES, TIME, INSTRUCTIONS);
+        RecipeService.addAdmirer(NAME, USERNAME);
+        assertThrows(RecipeAlreadySavedException.class, () ->
+                RecipeService.addAdmirer(NAME, USERNAME));
+    }
+
+    @Test
     void testSimilarRecipesCanBeFound() throws RecipeAlreadyExistsException, UncompletedFieldsException {
         RecipeService.addRecipe(USERNAME, "Chicken", CALORIES, TIME, INSTRUCTIONS);
         assertThrows(CouldNotFindRecipeException.class, () ->
