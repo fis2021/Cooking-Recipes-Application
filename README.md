@@ -12,7 +12,7 @@
 
 This application aims to help users by giving them a list of recipes made by "Head Chefs".
 They can search in this list by introducing words contained in the recipes name. Any "Chef"
-(logged in user) can rate recipes.
+(logged in user) can rate recipes, log out to the startup page and delete their account.
 
 ## Technologies Used
 - [Java 16](https://www.oracle.com/java/technologies/javase-downloads.html)
@@ -27,6 +27,8 @@ Anyone can search for recipes. In order to rate a recipe, the user needs to firs
 
 Both roles require a unique username, a password and the basic information
 like full name and email address.
+
+Afterwards, they can choose to log out to the start up page or they can delete their account.
 
 ## Junior Chef
 A Junior Chef can save his favourite recipes to view them later.
